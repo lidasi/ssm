@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cwweb.com.dao.ResumeInfoMapper" >
+  <resultMap id="BaseResultMap" type="cwweb.com.model.ResumeInfo" >
+    <id column="resume_id" property="resumeId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+    <result column="transaction_type" property="transactionType" jdbcType="INTEGER" />
+    <result column="transaction_money" property="transactionMoney" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    resume_id, user_id, order_number, commodity_id, transaction_type, transaction_money, 
+    update_date, create_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cwweb.com.model.ResumeInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from resume_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from resume_info
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resume_info
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cwweb.com.model.ResumeInfoExample" >
+    delete from resume_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cwweb.com.model.ResumeInfo" >
+    insert into resume_info (resume_id, user_id, order_number, 
+      commodity_id, transaction_type, transaction_money, 
+      update_date, create_date)
+    values (#{resumeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderNumber,jdbcType=VARCHAR}, 
+      #{commodityId,jdbcType=INTEGER}, #{transactionType,jdbcType=INTEGER}, #{transactionMoney,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cwweb.com.model.ResumeInfo" >
+    insert into resume_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resumeId != null" >
+        resume_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="commodityId != null" >
+        commodity_id,
+      </if>
+      <if test="transactionType != null" >
+        transaction_type,
+      </if>
+      <if test="transactionMoney != null" >
+        transaction_money,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resumeId != null" >
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="transactionType != null" >
+        #{transactionType,jdbcType=INTEGER},
+      </if>
+      <if test="transactionMoney != null" >
+        #{transactionMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cwweb.com.model.ResumeInfoExample" resultType="java.lang.Integer" >
+    select count(*) from resume_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update resume_info
+    <set >
+      <if test="record.resumeId != null" >
+        resume_id = #{record.resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderNumber != null" >
+        order_number = #{record.orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityId != null" >
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.transactionType != null" >
+        transaction_type = #{record.transactionType,jdbcType=INTEGER},
+      </if>
+      <if test="record.transactionMoney != null" >
+        transaction_money = #{record.transactionMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update resume_info
+    set resume_id = #{record.resumeId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      order_number = #{record.orderNumber,jdbcType=VARCHAR},
+      commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      transaction_type = #{record.transactionType,jdbcType=INTEGER},
+      transaction_money = #{record.transactionMoney,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cwweb.com.model.ResumeInfo" >
+    update resume_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null" >
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="transactionType != null" >
+        transaction_type = #{transactionType,jdbcType=INTEGER},
+      </if>
+      <if test="transactionMoney != null" >
+        transaction_money = #{transactionMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cwweb.com.model.ResumeInfo" >
+    update resume_info
+    set user_id = #{userId,jdbcType=INTEGER},
+      order_number = #{orderNumber,jdbcType=VARCHAR},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      transaction_type = #{transactionType,jdbcType=INTEGER},
+      transaction_money = #{transactionMoney,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR}
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </update>
+</mapper>

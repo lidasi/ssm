@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cwweb.com.dao.CommodityInfoMapper" >
+  <resultMap id="BaseResultMap" type="cwweb.com.model.CommodityInfo" >
+    <id column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+    <result column="commodity_bar" property="commodityBar" jdbcType="VARCHAR" />
+    <result column="commodity_market" property="commodityMarket" jdbcType="VARCHAR" />
+    <result column="shelves_state" property="shelvesState" jdbcType="INTEGER" />
+    <result column="style" property="style" jdbcType="INTEGER" />
+    <result column="color" property="color" jdbcType="INTEGER" />
+    <result column="size" property="size" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    commodity_id, commodity_name, commodity_bar, commodity_market, shelves_state, style, 
+    color, size, type, update_date, create_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cwweb.com.model.CommodityInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commodity_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity_info
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commodity_info
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cwweb.com.model.CommodityInfoExample" >
+    delete from commodity_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cwweb.com.model.CommodityInfo" >
+    insert into commodity_info (commodity_id, commodity_name, commodity_bar, 
+      commodity_market, shelves_state, style, 
+      color, size, type, 
+      update_date, create_date)
+    values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityBar,jdbcType=VARCHAR}, 
+      #{commodityMarket,jdbcType=VARCHAR}, #{shelvesState,jdbcType=INTEGER}, #{style,jdbcType=INTEGER}, 
+      #{color,jdbcType=INTEGER}, #{size,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{updateDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cwweb.com.model.CommodityInfo" >
+    insert into commodity_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commodityId != null" >
+        commodity_id,
+      </if>
+      <if test="commodityName != null" >
+        commodity_name,
+      </if>
+      <if test="commodityBar != null" >
+        commodity_bar,
+      </if>
+      <if test="commodityMarket != null" >
+        commodity_market,
+      </if>
+      <if test="shelvesState != null" >
+        shelves_state,
+      </if>
+      <if test="style != null" >
+        style,
+      </if>
+      <if test="color != null" >
+        color,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityName != null" >
+        #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityBar != null" >
+        #{commodityBar,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityMarket != null" >
+        #{commodityMarket,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesState != null" >
+        #{shelvesState,jdbcType=INTEGER},
+      </if>
+      <if test="style != null" >
+        #{style,jdbcType=INTEGER},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=INTEGER},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cwweb.com.model.CommodityInfoExample" resultType="java.lang.Integer" >
+    select count(*) from commodity_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update commodity_info
+    <set >
+      <if test="record.commodityId != null" >
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityName != null" >
+        commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityBar != null" >
+        commodity_bar = #{record.commodityBar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityMarket != null" >
+        commodity_market = #{record.commodityMarket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shelvesState != null" >
+        shelves_state = #{record.shelvesState,jdbcType=INTEGER},
+      </if>
+      <if test="record.style != null" >
+        style = #{record.style,jdbcType=INTEGER},
+      </if>
+      <if test="record.color != null" >
+        color = #{record.color,jdbcType=INTEGER},
+      </if>
+      <if test="record.size != null" >
+        size = #{record.size,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update commodity_info
+    set commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      commodity_bar = #{record.commodityBar,jdbcType=VARCHAR},
+      commodity_market = #{record.commodityMarket,jdbcType=VARCHAR},
+      shelves_state = #{record.shelvesState,jdbcType=INTEGER},
+      style = #{record.style,jdbcType=INTEGER},
+      color = #{record.color,jdbcType=INTEGER},
+      size = #{record.size,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      update_date = #{record.updateDate,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cwweb.com.model.CommodityInfo" >
+    update commodity_info
+    <set >
+      <if test="commodityName != null" >
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityBar != null" >
+        commodity_bar = #{commodityBar,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityMarket != null" >
+        commodity_market = #{commodityMarket,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesState != null" >
+        shelves_state = #{shelvesState,jdbcType=INTEGER},
+      </if>
+      <if test="style != null" >
+        style = #{style,jdbcType=INTEGER},
+      </if>
+      <if test="color != null" >
+        color = #{color,jdbcType=INTEGER},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cwweb.com.model.CommodityInfo" >
+    update commodity_info
+    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+      commodity_bar = #{commodityBar,jdbcType=VARCHAR},
+      commodity_market = #{commodityMarket,jdbcType=VARCHAR},
+      shelves_state = #{shelvesState,jdbcType=INTEGER},
+      style = #{style,jdbcType=INTEGER},
+      color = #{color,jdbcType=INTEGER},
+      size = #{size,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      update_date = #{updateDate,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR}
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+</mapper>

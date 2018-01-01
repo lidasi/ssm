@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cwweb.com.dao.AdminUserMapper" >
+  <resultMap id="BaseResultMap" type="cwweb.com.model.AdminUser" >
+    <id column="admin_id" property="adminId" jdbcType="INTEGER" />
+    <result column="admin_user" property="adminUser" jdbcType="VARCHAR" />
+    <result column="admin_password" property="adminPassword" jdbcType="VARCHAR" />
+    <result column="admin_name" property="adminName" jdbcType="VARCHAR" />
+    <result column="admin_sex" property="adminSex" jdbcType="INTEGER" />
+    <result column="admin_age" property="adminAge" jdbcType="INTEGER" />
+    <result column="admin_phone" property="adminPhone" jdbcType="VARCHAR" />
+    <result column="admin_relatives" property="adminRelatives" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="INTEGER" />
+    <result column="position" property="position" jdbcType="INTEGER" />
+    <result column="entry_date" property="entryDate" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    admin_id, admin_user, admin_password, admin_name, admin_sex, admin_age, admin_phone, 
+    admin_relatives, education, position, entry_date, create_date, update_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cwweb.com.model.AdminUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admin_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin_user
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin_user
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cwweb.com.model.AdminUserExample" >
+    delete from admin_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cwweb.com.model.AdminUser" >
+    insert into admin_user (admin_id, admin_user, admin_password, 
+      admin_name, admin_sex, admin_age, 
+      admin_phone, admin_relatives, education, 
+      position, entry_date, create_date, 
+      update_date)
+    values (#{adminId,jdbcType=INTEGER}, #{adminUser,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}, 
+      #{adminName,jdbcType=VARCHAR}, #{adminSex,jdbcType=INTEGER}, #{adminAge,jdbcType=INTEGER}, 
+      #{adminPhone,jdbcType=VARCHAR}, #{adminRelatives,jdbcType=VARCHAR}, #{education,jdbcType=INTEGER}, 
+      #{position,jdbcType=INTEGER}, #{entryDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cwweb.com.model.AdminUser" >
+    insert into admin_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="adminUser != null" >
+        admin_user,
+      </if>
+      <if test="adminPassword != null" >
+        admin_password,
+      </if>
+      <if test="adminName != null" >
+        admin_name,
+      </if>
+      <if test="adminSex != null" >
+        admin_sex,
+      </if>
+      <if test="adminAge != null" >
+        admin_age,
+      </if>
+      <if test="adminPhone != null" >
+        admin_phone,
+      </if>
+      <if test="adminRelatives != null" >
+        admin_relatives,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="entryDate != null" >
+        entry_date,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminUser != null" >
+        #{adminUser,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPassword != null" >
+        #{adminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null" >
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminSex != null" >
+        #{adminSex,jdbcType=INTEGER},
+      </if>
+      <if test="adminAge != null" >
+        #{adminAge,jdbcType=INTEGER},
+      </if>
+      <if test="adminPhone != null" >
+        #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adminRelatives != null" >
+        #{adminRelatives,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=INTEGER},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="entryDate != null" >
+        #{entryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cwweb.com.model.AdminUserExample" resultType="java.lang.Integer" >
+    select count(*) from admin_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update admin_user
+    <set >
+      <if test="record.adminId != null" >
+        admin_id = #{record.adminId,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminUser != null" >
+        admin_user = #{record.adminUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminPassword != null" >
+        admin_password = #{record.adminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminName != null" >
+        admin_name = #{record.adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminSex != null" >
+        admin_sex = #{record.adminSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminAge != null" >
+        admin_age = #{record.adminAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminPhone != null" >
+        admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminRelatives != null" >
+        admin_relatives = #{record.adminRelatives,jdbcType=VARCHAR},
+      </if>
+      <if test="record.education != null" >
+        education = #{record.education,jdbcType=INTEGER},
+      </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=INTEGER},
+      </if>
+      <if test="record.entryDate != null" >
+        entry_date = #{record.entryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update admin_user
+    set admin_id = #{record.adminId,jdbcType=INTEGER},
+      admin_user = #{record.adminUser,jdbcType=VARCHAR},
+      admin_password = #{record.adminPassword,jdbcType=VARCHAR},
+      admin_name = #{record.adminName,jdbcType=VARCHAR},
+      admin_sex = #{record.adminSex,jdbcType=INTEGER},
+      admin_age = #{record.adminAge,jdbcType=INTEGER},
+      admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
+      admin_relatives = #{record.adminRelatives,jdbcType=VARCHAR},
+      education = #{record.education,jdbcType=INTEGER},
+      position = #{record.position,jdbcType=INTEGER},
+      entry_date = #{record.entryDate,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cwweb.com.model.AdminUser" >
+    update admin_user
+    <set >
+      <if test="adminUser != null" >
+        admin_user = #{adminUser,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPassword != null" >
+        admin_password = #{adminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null" >
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminSex != null" >
+        admin_sex = #{adminSex,jdbcType=INTEGER},
+      </if>
+      <if test="adminAge != null" >
+        admin_age = #{adminAge,jdbcType=INTEGER},
+      </if>
+      <if test="adminPhone != null" >
+        admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adminRelatives != null" >
+        admin_relatives = #{adminRelatives,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=INTEGER},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=INTEGER},
+      </if>
+      <if test="entryDate != null" >
+        entry_date = #{entryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cwweb.com.model.AdminUser" >
+    update admin_user
+    set admin_user = #{adminUser,jdbcType=VARCHAR},
+      admin_password = #{adminPassword,jdbcType=VARCHAR},
+      admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_sex = #{adminSex,jdbcType=INTEGER},
+      admin_age = #{adminAge,jdbcType=INTEGER},
+      admin_phone = #{adminPhone,jdbcType=VARCHAR},
+      admin_relatives = #{adminRelatives,jdbcType=VARCHAR},
+      education = #{education,jdbcType=INTEGER},
+      position = #{position,jdbcType=INTEGER},
+      entry_date = #{entryDate,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=VARCHAR}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+</mapper>

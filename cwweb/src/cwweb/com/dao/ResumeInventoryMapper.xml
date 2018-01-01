@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cwweb.com.dao.ResumeInventoryMapper" >
+  <resultMap id="BaseResultMap" type="cwweb.com.model.ResumeInventory" >
+    <id column="resin_id" property="resinId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+    <result column="in_number" property="inNumber" jdbcType="INTEGER" />
+    <result column="out_number" property="outNumber" jdbcType="INTEGER" />
+    <result column="brokerage" property="brokerage" jdbcType="VARCHAR" />
+    <result column="operation_type" property="operationType" jdbcType="INTEGER" />
+    <result column="commdity_unit" property="commdityUnit" jdbcType="INTEGER" />
+    <result column="in_date" property="inDate" jdbcType="VARCHAR" />
+    <result column="out_date" property="outDate" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    resin_id, uuid, commodity_id, in_number, out_number, brokerage, operation_type, commdity_unit, 
+    in_date, out_date, create_date, update_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cwweb.com.model.ResumeInventoryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from resume_inventory
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from resume_inventory
+    where resin_id = #{resinId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resume_inventory
+    where resin_id = #{resinId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cwweb.com.model.ResumeInventoryExample" >
+    delete from resume_inventory
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cwweb.com.model.ResumeInventory" >
+    insert into resume_inventory (resin_id, uuid, commodity_id, 
+      in_number, out_number, brokerage, 
+      operation_type, commdity_unit, in_date, 
+      out_date, create_date, update_date
+      )
+    values (#{resinId,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{commodityId,jdbcType=INTEGER}, 
+      #{inNumber,jdbcType=INTEGER}, #{outNumber,jdbcType=INTEGER}, #{brokerage,jdbcType=VARCHAR}, 
+      #{operationType,jdbcType=INTEGER}, #{commdityUnit,jdbcType=INTEGER}, #{inDate,jdbcType=VARCHAR}, 
+      #{outDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cwweb.com.model.ResumeInventory" >
+    insert into resume_inventory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resinId != null" >
+        resin_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="commodityId != null" >
+        commodity_id,
+      </if>
+      <if test="inNumber != null" >
+        in_number,
+      </if>
+      <if test="outNumber != null" >
+        out_number,
+      </if>
+      <if test="brokerage != null" >
+        brokerage,
+      </if>
+      <if test="operationType != null" >
+        operation_type,
+      </if>
+      <if test="commdityUnit != null" >
+        commdity_unit,
+      </if>
+      <if test="inDate != null" >
+        in_date,
+      </if>
+      <if test="outDate != null" >
+        out_date,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resinId != null" >
+        #{resinId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="inNumber != null" >
+        #{inNumber,jdbcType=INTEGER},
+      </if>
+      <if test="outNumber != null" >
+        #{outNumber,jdbcType=INTEGER},
+      </if>
+      <if test="brokerage != null" >
+        #{brokerage,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+        #{operationType,jdbcType=INTEGER},
+      </if>
+      <if test="commdityUnit != null" >
+        #{commdityUnit,jdbcType=INTEGER},
+      </if>
+      <if test="inDate != null" >
+        #{inDate,jdbcType=VARCHAR},
+      </if>
+      <if test="outDate != null" >
+        #{outDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cwweb.com.model.ResumeInventoryExample" resultType="java.lang.Integer" >
+    select count(*) from resume_inventory
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update resume_inventory
+    <set >
+      <if test="record.resinId != null" >
+        resin_id = #{record.resinId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uuid != null" >
+        uuid = #{record.uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityId != null" >
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.inNumber != null" >
+        in_number = #{record.inNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.outNumber != null" >
+        out_number = #{record.outNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.brokerage != null" >
+        brokerage = #{record.brokerage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationType != null" >
+        operation_type = #{record.operationType,jdbcType=INTEGER},
+      </if>
+      <if test="record.commdityUnit != null" >
+        commdity_unit = #{record.commdityUnit,jdbcType=INTEGER},
+      </if>
+      <if test="record.inDate != null" >
+        in_date = #{record.inDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outDate != null" >
+        out_date = #{record.outDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update resume_inventory
+    set resin_id = #{record.resinId,jdbcType=INTEGER},
+      uuid = #{record.uuid,jdbcType=VARCHAR},
+      commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      in_number = #{record.inNumber,jdbcType=INTEGER},
+      out_number = #{record.outNumber,jdbcType=INTEGER},
+      brokerage = #{record.brokerage,jdbcType=VARCHAR},
+      operation_type = #{record.operationType,jdbcType=INTEGER},
+      commdity_unit = #{record.commdityUnit,jdbcType=INTEGER},
+      in_date = #{record.inDate,jdbcType=VARCHAR},
+      out_date = #{record.outDate,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cwweb.com.model.ResumeInventory" >
+    update resume_inventory
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityId != null" >
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="inNumber != null" >
+        in_number = #{inNumber,jdbcType=INTEGER},
+      </if>
+      <if test="outNumber != null" >
+        out_number = #{outNumber,jdbcType=INTEGER},
+      </if>
+      <if test="brokerage != null" >
+        brokerage = #{brokerage,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+        operation_type = #{operationType,jdbcType=INTEGER},
+      </if>
+      <if test="commdityUnit != null" >
+        commdity_unit = #{commdityUnit,jdbcType=INTEGER},
+      </if>
+      <if test="inDate != null" >
+        in_date = #{inDate,jdbcType=VARCHAR},
+      </if>
+      <if test="outDate != null" >
+        out_date = #{outDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resin_id = #{resinId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cwweb.com.model.ResumeInventory" >
+    update resume_inventory
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      in_number = #{inNumber,jdbcType=INTEGER},
+      out_number = #{outNumber,jdbcType=INTEGER},
+      brokerage = #{brokerage,jdbcType=VARCHAR},
+      operation_type = #{operationType,jdbcType=INTEGER},
+      commdity_unit = #{commdityUnit,jdbcType=INTEGER},
+      in_date = #{inDate,jdbcType=VARCHAR},
+      out_date = #{outDate,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=VARCHAR}
+    where resin_id = #{resinId,jdbcType=INTEGER}
+  </update>
+</mapper>

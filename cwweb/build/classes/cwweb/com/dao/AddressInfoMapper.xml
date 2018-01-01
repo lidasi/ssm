@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cwweb.com.dao.AddressInfoMapper" >
+  <resultMap id="BaseResultMap" type="cwweb.com.model.AddressInfo" >
+    <id column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="addr_name" property="addrName" jdbcType="VARCHAR" />
+    <result column="addr_phone" property="addrPhone" jdbcType="VARCHAR" />
+    <result column="people_addr" property="peopleAddr" jdbcType="VARCHAR" />
+    <result column="addr_sex" property="addrSex" jdbcType="INTEGER" />
+    <result column="start_date" property="startDate" jdbcType="VARCHAR" />
+    <result column="end_date" property="endDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    address_id, user_id, addr_name, addr_phone, people_addr, addr_sex, start_date, end_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cwweb.com.model.AddressInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from address_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from address_info
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from address_info
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cwweb.com.model.AddressInfoExample" >
+    delete from address_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cwweb.com.model.AddressInfo" >
+    insert into address_info (address_id, user_id, addr_name, 
+      addr_phone, people_addr, addr_sex, 
+      start_date, end_date)
+    values (#{addressId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{addrName,jdbcType=VARCHAR}, 
+      #{addrPhone,jdbcType=VARCHAR}, #{peopleAddr,jdbcType=VARCHAR}, #{addrSex,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=VARCHAR}, #{endDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cwweb.com.model.AddressInfo" >
+    insert into address_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="addrName != null" >
+        addr_name,
+      </if>
+      <if test="addrPhone != null" >
+        addr_phone,
+      </if>
+      <if test="peopleAddr != null" >
+        people_addr,
+      </if>
+      <if test="addrSex != null" >
+        addr_sex,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addressId != null" >
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="addrName != null" >
+        #{addrName,jdbcType=VARCHAR},
+      </if>
+      <if test="addrPhone != null" >
+        #{addrPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleAddr != null" >
+        #{peopleAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="addrSex != null" >
+        #{addrSex,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cwweb.com.model.AddressInfoExample" resultType="java.lang.Integer" >
+    select count(*) from address_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update address_info
+    <set >
+      <if test="record.addressId != null" >
+        address_id = #{record.addressId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addrName != null" >
+        addr_name = #{record.addrName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrPhone != null" >
+        addr_phone = #{record.addrPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.peopleAddr != null" >
+        people_addr = #{record.peopleAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrSex != null" >
+        addr_sex = #{record.addrSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.startDate != null" >
+        start_date = #{record.startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endDate != null" >
+        end_date = #{record.endDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update address_info
+    set address_id = #{record.addressId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      addr_name = #{record.addrName,jdbcType=VARCHAR},
+      addr_phone = #{record.addrPhone,jdbcType=VARCHAR},
+      people_addr = #{record.peopleAddr,jdbcType=VARCHAR},
+      addr_sex = #{record.addrSex,jdbcType=INTEGER},
+      start_date = #{record.startDate,jdbcType=VARCHAR},
+      end_date = #{record.endDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cwweb.com.model.AddressInfo" >
+    update address_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="addrName != null" >
+        addr_name = #{addrName,jdbcType=VARCHAR},
+      </if>
+      <if test="addrPhone != null" >
+        addr_phone = #{addrPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleAddr != null" >
+        people_addr = #{peopleAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="addrSex != null" >
+        addr_sex = #{addrSex,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cwweb.com.model.AddressInfo" >
+    update address_info
+    set user_id = #{userId,jdbcType=INTEGER},
+      addr_name = #{addrName,jdbcType=VARCHAR},
+      addr_phone = #{addrPhone,jdbcType=VARCHAR},
+      people_addr = #{peopleAddr,jdbcType=VARCHAR},
+      addr_sex = #{addrSex,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=VARCHAR},
+      end_date = #{endDate,jdbcType=VARCHAR}
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </update>
+</mapper>
