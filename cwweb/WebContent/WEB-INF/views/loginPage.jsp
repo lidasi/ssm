@@ -68,15 +68,15 @@ pageContext.setAttribute("webpath", path);
                 });
                 
                 $("#yzm").focus(function(){
-                    var username = $(this).val();
-                    if(username=='输入验证码'){
+                    var yzm = $(this).val();
+                    if(yzm=='输入验证码'){
                     $(this).val('');
                     }
                 });
                 
                 $("#yzm").focusout(function(){
-                    var username = $(this).val();
-                    if(username==''){
+                    var yzm = $(this).val();
+                    if(yzm==''){
                     $(this).val('输入验证码');
                     }
                 });
