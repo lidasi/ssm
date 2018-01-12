@@ -28,8 +28,8 @@ pageContext.setAttribute("webpath", path);
         <link href="static/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-<!--         <link href="static/css/inInventory.css" rel="stylesheet" type="text/css" media="all" />
- -->
+        <link href="static/css/inInventory.css" rel="stylesheet" type="text/css" />
+
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
         <script src="static/bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
@@ -37,15 +37,215 @@ pageContext.setAttribute("webpath", path);
         
         <script type="text/javascript">
 	        $(function () {
-	            $('#ann').dropdown('toggle');
-	        }); 
+	        	$("#Type_div").hide();
+	        	$("#Size_div").hide();
+	        	$("#Style_div").hide();
+	        	$("#Color_div").hide();
+	        	$("#Bar_div").hide();
+	        	$("#Name_div").hide();
+	        	
+	        	var searchInfo;
+	        	$(".selectType").change(function(){
+	        	       var selectType=$(this).children('option:selected').val()
+	        	       if (selectType != "" && selectType != null) {
+	        	    	   if(selectType == 0) {
+	        	    		   $("#Type_div_text").html("运动")
+	        	    		   $("#Type_div").show();
+	        	    	   } else if(selectType == 1) {
+                               $("#Type_div_text").html("休闲")
+                               $("#Type_div").show();
+                           } else if(selectType == 2) {
+                               $("#Type_div_text").html("老年装")
+                               $("#Type_div").show();
+                           }
+	        	       } else {
+	        	    	   $("#Type_div_text").html("")
+	        	    	   $("#Type_div").hide();
+	        	       }
+	        	});
+	        	
+	        	$(".selectSize").change(function(){
+                    var selectSize=$(this).children('option:selected').val()
+                    if (selectSize != "" && selectSize != null) {
+                        if(selectSize == 0) {
+                            $("#Size_div_text").html("XXS")
+                            $("#Size_div").show();
+                        } else if(selectSize == 1) {
+                            $("#Size_div_text").html("XS")
+                            $("#Size_div").show();
+                        } else if(selectSize == 2) {
+                            $("#Size_div_text").html("S")
+                            $("#Size_div").show();
+                        } else if(selectSize == 3) {
+                            $("#Size_div_text").html("M")
+                            $("#Size_div").show();
+                        } else if(selectSize == 4) {
+                            $("#Size_div_text").html("L")
+                            $("#Size_div").show();
+                        } else if(selectSize == 5) {
+                            $("#Size_div_text").html("XL")
+                            $("#Size_div").show();
+                        } else if(selectSize == 6) {
+                            $("#Size_div_text").html("XXL")
+                            $("#Size_div").show();
+                        } else if(selectSize == 7) {
+                            $("#Size_div_text").html("XXXL")
+                            $("#Size_div").show();
+                        }
+                    } else {
+                        $("#Size_div_text").html("")
+                        $("#Size_div").hide();
+                    }
+             });
+	        	
+	        	$(".selectStyle").change(function(){
+                    var selectStyle=$(this).children('option:selected').val()
+                    if (selectStyle != "" && selectStyle != null) {
+                        if(selectStyle == 0) {
+                            $("#Style_div_text").html("春装")
+                            $("#Style_div").show();
+                        } else if(selectStyle == 1) {
+                            $("#Style_div_text").html("夏装")
+                            $("#Style_div").show();
+                        } else if(selectStyle == 2) {
+                            $("#Style_div_text").html("秋装")
+                            $("#Style_div").show();
+                        } else if(selectStyle == 3) {
+                            $("#Style_div_text").html("冬装")
+                            $("#Style_div").show();
+                        } else if(selectStyle == 4) {
+                            $("#Style_div_text").html("四季装")
+                            $("#Style_div").show();
+                        }
+                    } else {
+                        $("#Style_div_text").html("")
+                        $("#Style_div").hide();
+                    }
+             });
+	        	
+	        	$(".selectColor").change(function(){
+                    var selectColor=$(this).children('option:selected').val()
+                    if (selectColor != "" && selectColor != null) {
+                        if(selectColor == 0) {
+                            $("#Color_div_text").html("红")
+                            $("#Color_div").show();
+                        } else if(selectColor == 1) {
+                            $("#Color_div_text").html("橙")
+                            $("#Color_div").show();
+                        } else if(selectColor == 2) {
+                            $("#Color_div_text").html("黄")
+                            $("#Color_div").show();
+                        } else if(selectColor == 3) {
+                            $("#Color_div_text").html("绿")
+                            $("#Color_div").show();
+                        } else if(selectColor == 4) {
+                            $("#Color_div_text").html("青")
+                            $("#Color_div").show();
+                        } else if(selectColor == 5) {
+                            $("#Color_div_text").html("蓝")
+                            $("#Color_div").show();
+                        } else if(selectColor == 6) {
+                            $("#Color_div_text").html("紫")
+                            $("#Color_div").show();
+                        }
+                    } else {
+                        $("#Color_div_text").html("")
+                        $("#Color_div").hide();
+                    }
+             });
+	        	
+	        $("#commodityBar").change(function(){
+	        	var commodityBar = $("#commodityBar").val();
+	        	if (commodityBar != "" && commodityBar != null) {
+	        		$("#Bar_div_text").html(commodityBar);
+	        		$("#Bar_div").show();
+	        	} else {
+	        		$("#Bar_div").hide();
+	        	}
+	        });
+	        $("#commodityName").change(function(){
+                var commodityName = $("#commodityName").val();
+                if (commodityName != "" && commodityName != null) {
+                    $("#Name_div_text").html(commodityName);
+                    $("#Name_div").show();
+                } else {
+                    $("#Name_div").hide();
+                }
+            });
+	            
+	        	$("#Type_div_btn").click(function(){
+	        		$("#Type_div").hide();
+	        		$(".selectType").val("");
+	        	});
+	        	
+	        	$("#Size_div_btn").click(function(){
+                    $("#Size_div").hide();
+                    $(".selectSize").val("");
+                });
+	        	
+	        	$("#Style_div_btn").click(function(){
+                    $("#Style_div").hide();
+                    $(".selectStyle").val("");
+                });
+	        	$("#Color_div_btn").click(function(){
+                    $("#Color_div").hide();
+                    $(".selectColor").val("");
+                });
+	        	$("#Bar_div_btn").click(function(){
+                    $("#Bar_div").hide();
+                    $("#commodityBar").val("");
+                });
+	        	$("#Name_div_btn").click(function(){
+                    $("#Name_div").hide();
+                    $("#commodityName").val("");
+                });
+	        	
+	        	$("#search").click(function(){
+	        		var type = $(".selectType").children('option:selected').val();
+	        		var size = $(".selectSize").children('option:selected').val();
+	        		var style = $(".selectStyle").children('option:selected').val();
+	        		var color = $(".selectColor").children('option:selected').val();
+	        		var bar = $("#commodityBar").val();
+	        		var name = $("#commodityName").val();
+	        		var formArry = {
+	        			"type" : type, 
+	        			"size" : size,
+	        			"style" : style,
+	        			"color" : color,
+	        			"bar" : bar,
+	        			"name" : name
+	        		};
+	        				
+	        		$.ajax({
+	                    //几个参数需要注意一下
+	                      type: "GET",//方法类型
+	                      dataType: "json",//服务端接收的数据类型
+	                      url: "user/commoditySearch",//url
+	                      async: true,
+	                      data: formArry,
+	                      success: function (result) {
+	                        console.log(result);//打印服务端返回的数据(调试用)
+	                        if (result.commodityInfo != null && result.commodityInfo != "") {
+	                            chageCode()
+	                            window.location.href = 'user/mainPage';
+	                          
+	                        } else {
+	                            alert("失败");
+	                        };
+	                      },
+	                      error : function() {
+	                        alert("异常！");
+	                      }
+	                 });
+	        	});
+	        });
         </script>
     </head>
   
      <body>
         <h1 class="page-header">入库信息</h1>
         
-        <div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
+        <div class="col-sm-12 col-md-12 main">
         <div class="row placeholders">
             <div class="form-group col-sm-2 col-md-2">
 			    <label for="commodityBar">编号</label>
@@ -53,74 +253,58 @@ pageContext.setAttribute("webpath", path);
 			</div>
 			<div class="form-group col-sm-2 col-md-2">
                 <label for="commodityBar">名称</label>
-                <input type="text" class="form-control" id="commodityBar" placeholder="商品名称">
+                <input type="text" class="form-control" id="commodityName" placeholder="商品名称">
             </div>
             <div class="form-group col-sm-2 col-md-2" style="height: 10px">
 		            <label class="" for="name">类型</label>
-		        <select class="form-control">
+		        <select class="selectType form-control">
+		            <option value="-1" selected = "selected"></option>
 		            <option value="0">运动</option>
 		            <option value="1">休闲</option>
 		            <option value="2">老年装</option>
 		        </select>
-
-
+                
+            </div>
+            <div class="form-group col-sm-2 col-md-2" style="height: 10px">
+                <label for="commoditySize">尺码</label>
+                <select class="selectSize form-control">
+                  <option value="-1" selected = "selected"></option>
+                  <option value="0">XXS</option>
+                  <option value="1">XS</option>
+                  <option value="2">S</option>
+                  <option value="3">M</option>
+                  <option value="4">L</option>
+                  <option value="5">XL</option>
+                  <option value="6">XXL</option>
+                  <option value="7">XXXL</option>
+                </select>
                 
             </div>
             <div class="form-group col-sm-1 col-md-1" style="height: 10px">
-                <label for="commodityBar">尺码</label>
-                <div class="dropdown">
-                      <button id="commoditySize" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        尺码
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="commoditySize">
-                        <li value="0"><a>XXS</a></li>
-                        <li value="1"><a>XS</a></li>
-                        <li value="2"><a>S</a></li>
-                        <li value="3"><a>M</a></li>
-                        <li value="4"><a>L</a></li>
-                        <li value="5"><a>XL</a></li>
-                        <li value="6"><a>XXL</a></li>
-                        <li value="7"><a>XXXL</a></li>
-                      </ul>
-                </div>
+                <label for="commodityColor">颜色</label>
+                <select class="selectColor form-control">
+                    <option value="-1" selected = "selected"></option>
+                    <option value="0">红</option>
+                    <option value="1">橙</option>
+                    <option value="2">黄</option>
+                    <option value="3">绿</option>
+                    <option value="4">青</option>
+                    <option value="5">蓝</option>
+                    <option value="6">紫</option>
+                </select>
                 
             </div>
-            <div class="form-group col-sm-1 col-md-1" style="height: 10px">
-                <label for="commodityBar">颜色</label>
-                <div class="dropdown">
-                      <button id="commodityColor" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        颜色
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="commodityColor">
-                        <li value="0"><a>红</a></li>
-                        <li value="1"><a>橙</a></li>
-                        <li value="2"><a>黄</a></li>
-                        <li value="3"><a>绿</a></li>
-                        <li value="4"><a>青</a></li>
-                        <li value="5"><a>蓝</a></li>
-                        <li value="6"><a>紫</a></li>
-                      </ul>
-                </div>
-                
-            </div>
-            <div class="form-group col-sm-1 col-md-1" style="height: 10px">
-                <label for="commodityBar">款式</label>
-                <div class="dropdown">
-                      <button id="commodityStyle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        款式
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="commodityStyle">
-                        <li value="0"><a>春装</a></li>
-                        <li value="1"><a>冬装</a></li>
-                        <li value="2"><a>夏装</a></li>
-                        <li value="3"><a>秋装</a></li>
-                        <li value="4"><a>四季装</a></li>
-                        
-                      </ul>
-                </div>
+            <div class="form-group col-sm-2 col-md-2" style="height: 10px">
+                <label for="commodityStyle">款式</label>
+                <select class="selectStyle form-control">
+                    <option value="-1" selected = "selected"></option>
+                    <option value="0">春装</option>
+                    <option value="1">夏装</option>
+                    <option value="2">秋装</option>
+                    <option value="3">冬装</option>
+                    <option value="4">四季装</option>
+                  
+                </select>
                 
             </div>
 			<div class="form-group col-sm-1 col-md-1">
@@ -130,9 +314,33 @@ pageContext.setAttribute("webpath", path);
                  </button>
 			</div>
         </div>
-        <div class="row placeholders">
-            <div id="searchInfo"></div>
+        <div class="row placeholders col-sm-11 col-md-11 ">
+            <div class="selectText" id="Bar_div" style="margin-left: -10px">
+                    <strong id="Bar_div_text" style="float: left"></strong>
+                    <button id="Bar_div_btn" type="button" style="float: right; border:none; background-color: #fff;" >×</button>
+            </div>
+            <div class="selectText" id="Name_div" style="margin-left: 15px">
+                    <strong id="Name_div_text" style="float: left"></strong>
+                    <button id="Name_div_btn" type="button" style="float: right; border:none; background-color: #fff;" >×</button>
+            </div>
+            <div class="selectText" id="Type_div" style="margin-left: 15px">
+                    <strong id="Type_div_text" style="float: left"></strong>
+                    <button id="Type_div_btn" type="button" style="float: right; border:none; background-color: #fff;" >×</button>
+            </div>
+            <div class="selectText" id="Size_div" style=" margin-left: 15px">
+                    <strong id="Size_div_text" style="float: left"></strong>
+                    <button id="Size_div_btn" type="button" style="float: right; border:none; background-color: #fff" >×</button>
+            </div>
+            <div class="selectText" id="Color_div" style="margin-left: 15px">
+                    <strong id="Color_div_text" style="float: left"></strong>
+                    <button id="Color_div_btn" type="button" style="float: right; border:none; background-color: #fff" >×</button>
+            </div>
+            <div class="selectText" id="Style_div" style="margin-left: 15px">
+                    <strong id="Style_div_text" style="float: left"></strong>
+                    <button id="Style_div_btn" type="button" style="float: right; border:none; background-color: #fff" >×</button>
+            </div>
         </div>
+        <hr>
         <hr>
         <div class="row placeholders">
 	         <h2 class="sub-header">库存详情</h2>

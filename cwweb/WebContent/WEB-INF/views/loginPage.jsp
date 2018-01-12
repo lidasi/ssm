@@ -102,7 +102,6 @@ pageContext.setAttribute("webpath", path);
                   success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
                     if (result.checkCode == 200) {
-                    	alert("SUCCESS");
                     	chageCode()
                     	window.location.href = 'user/mainPage';
                       
