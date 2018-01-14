@@ -16,6 +16,7 @@ import cwweb.com.model.CommodityInfoExample;
 import cwweb.com.model.CommodityInfoExample.Criteria;
 import cwweb.com.service.CommodityInfoService;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @RequestMapping("/user")
 @Controller
@@ -49,7 +50,7 @@ public class CommodityController {
             criteria.andColorEqualTo(color);
         }
         if(StringUtils.isNotEmpty(name)) {
-            criteria.andCommodityNameEqualTo(name);
+            criteria.andCommodityNameLike("%" + name + "%");
         }
         if(StringUtils.isNotEmpty(bar)) {
             criteria.andCommodityBarEqualTo(bar);
@@ -57,7 +58,12 @@ public class CommodityController {
         List<CommodityInfo> resList = commodityInfoService.commodityInfoSearch(commodityInfoExample);
         
         for(CommodityInfo arr : resList) {
-            jsonArray.add(arr);
+        	JSONObject jsonObject = new JSONObject();
+        	jsonObject.put("bar", arr.getCommodityBar());
+        	jsonObject.put("name", arr.getCommodityName());
+        	jsonObject.put("market", arr.getCommodityMarket());
+        	
+            jsonArray.add(jsonObject);
         }
         
         return jsonArray;

@@ -22,10 +22,133 @@ pageContext.setAttribute("webpath", path);
         <!--
         <link rel="stylesheet" type="text/css" href="styles.css">
         -->      
+        <link rel="stylesheet" type="text/css" href="static/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="static/bootstrap/dist/css/bootstrap-theme.min.css" />
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="static/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
+        <!-- Custom styles for this template -->
+        <link href="static/css/inInventory.css" rel="stylesheet" type="text/css" />
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="static/bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
+        <script type="text/javascript" src="static/js/jquery-1.8.3.js"></script>
+        <script type="text/javascript" src="static/js/inInventory.js"></script>
     </head>
   
-    <body>
-         <div>商品入库管理</div>
+     <body>
+        <h1 class="page-header">入库信息</h1>
+        
+        <div class="col-sm-12 col-md-12 main">
+        <div class="row placeholders">
+            <div class="form-group col-sm-2 col-md-2">
+			    <label for="commodityBar">编号</label>
+			    <input type="text" class="form-control" id="commodityBar" placeholder="商品编号">
+			</div>
+			<div class="form-group col-sm-2 col-md-2">
+                <label for="commodityBar">名称</label>
+                <input type="text" class="form-control" id="commodityName" placeholder="商品名称">
+            </div>
+            <div class="form-group col-sm-2 col-md-2" style="height: 10px">
+		            <label class="" for="name">类型</label>
+		        <select class="selectType form-control">
+		            <option value="-1" selected = "selected"></option>
+		            <option value="0">运动</option>
+		            <option value="1">休闲</option>
+		            <option value="2">老年装</option>
+		        </select>
+                
+            </div>
+            <div class="form-group col-sm-2 col-md-2" style="height: 10px">
+                <label for="commoditySize">尺码</label>
+                <select class="selectSize form-control">
+                  <option value="-1" selected = "selected"></option>
+                  <option value="0">XXS</option>
+                  <option value="1">XS</option>
+                  <option value="2">S</option>
+                  <option value="3">M</option>
+                  <option value="4">L</option>
+                  <option value="5">XL</option>
+                  <option value="6">XXL</option>
+                  <option value="7">XXXL</option>
+                </select>
+                
+            </div>
+            <div class="form-group col-sm-1 col-md-1" style="height: 10px">
+                <label for="commodityColor">颜色</label>
+                <select class="selectColor form-control">
+                    <option value="-1" selected = "selected"></option>
+                    <option value="0">红</option>
+                    <option value="1">橙</option>
+                    <option value="2">黄</option>
+                    <option value="3">绿</option>
+                    <option value="4">青</option>
+                    <option value="5">蓝</option>
+                    <option value="6">紫</option>
+                </select>
+                
+            </div>
+            <div class="form-group col-sm-2 col-md-2" style="height: 10px">
+                <label for="commodityStyle">款式</label>
+                <select class="selectStyle form-control">
+                    <option value="-1" selected = "selected"></option>
+                    <option value="0">春装</option>
+                    <option value="1">夏装</option>
+                    <option value="2">秋装</option>
+                    <option value="3">冬装</option>
+                    <option value="4">四季装</option>
+                  
+                </select>
+                
+            </div>
+			<div class="form-group col-sm-1 col-md-1">
+			     <label for="search">检索</label>
+			     <button type="button" class="form-control btn btn-info btn-xs" id="search">
+                     <span class="glyphicon glyphicon-search"></span>
+                 </button>
+			</div>
+        </div>
+        <div class="row placeholders col-sm-11 col-md-11 ">
+            <div class="selectText" id="Bar_div" style="margin-left: -10px">
+                    <strong id="Bar_div_text" style="float: left"></strong>
+                    <button id="Bar_div_btn" type="button" style="float: right; border:none; background-color: #fff;" >×</button>
+            </div>
+            <div class="selectText" id="Name_div" style="margin-left: 15px">
+                    <strong id="Name_div_text" style="float: left"></strong>
+                    <button id="Name_div_btn" type="button" style="float: right; border:none; background-color: #fff;" >×</button>
+            </div>
+            <div class="selectText" id="Type_div" style="margin-left: 15px">
+                    <strong id="Type_div_text" style="float: left"></strong>
+                    <button id="Type_div_btn" type="button" style="float: right; border:none; background-color: #fff;" >×</button>
+            </div>
+            <div class="selectText" id="Size_div" style=" margin-left: 15px">
+                    <strong id="Size_div_text" style="float: left"></strong>
+                    <button id="Size_div_btn" type="button" style="float: right; border:none; background-color: #fff" >×</button>
+            </div>
+            <div class="selectText" id="Color_div" style="margin-left: 15px">
+                    <strong id="Color_div_text" style="float: left"></strong>
+                    <button id="Color_div_btn" type="button" style="float: right; border:none; background-color: #fff" >×</button>
+            </div>
+            <div class="selectText" id="Style_div" style="margin-left: 15px">
+                    <strong id="Style_div_text" style="float: left"></strong>
+                    <button id="Style_div_btn" type="button" style="float: right; border:none; background-color: #fff" >×</button>
+            </div>
+        </div>
+        <hr>
+        <hr>
+        <div class="row placeholders">
+	         <h2 class="sub-header">库存详情</h2>
+	          <div class="table-responsive">
+	            <table id="commdityTable" class="table table-hover">
+	             
+	            </table>
+	          </div>
+            </div>
+         </div>
+         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="static/bootstrap/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     </body>
 </html>

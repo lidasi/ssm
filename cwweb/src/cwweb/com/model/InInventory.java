@@ -24,6 +24,8 @@ public class InInventory {
     private String createDate;
 
     private String updateDate;
+    
+    private CommodityInfo commodityInfo;
 
     public Integer getAddressId() {
         return addressId;
@@ -120,4 +122,23 @@ public class InInventory {
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate == null ? null : updateDate.trim();
     }
+
+	public CommodityInfo getCommodityInfo() {
+		return commodityInfo;
+	}
+
+	public void setCommodityInfo(CommodityInfo commodityInfo) {
+		this.commodityInfo = commodityInfo;
+	}
+
+	@Override
+	public String toString() {
+		return "InInventory [addressId=" + addressId + ", uuid=" + uuid + ", commdityId=" + commdityId + ", unitPrice="
+				+ unitPrice + ", commdityTotal=" + commdityTotal + ", inNumber=" + inNumber + ", commdityUnit="
+				+ commdityUnit + ", inType=" + inType + ", brokerage=" + brokerage + ", inDate=" + inDate
+				+ ", createDate=" + createDate + ", updateDate=" + updateDate + ", commodityInfo=" + commodityInfo
+				+ "]";
+	}
+    
+    
 }
