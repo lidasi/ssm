@@ -11,26 +11,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cwweb.com.model.CommodityInfo;
-import cwweb.com.model.CommodityInfoExample;
-import cwweb.com.model.CommodityInfoExample.Criteria;
-import cwweb.com.service.CommodityInfoService;
+import cwweb.com.model.InInventory;
+import cwweb.com.model.InInventoryExample;
+import cwweb.com.model.InInventoryExample.Criteria;
+import cwweb.com.model.TotalInventory;
+import cwweb.com.service.InInventoryService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @RequestMapping("/user")
 @Controller
 public class CommodityController {
-
-    @Autowired
-    private CommodityInfoService commodityInfoService;
     
+    @Autowired
+    private InInventoryService inInventoryService;
+    
+    /**
+     * 商品入库管理
+     * @param request
+     * @return
+     */
     @RequestMapping(value ="/commoditySearch", method = RequestMethod.GET)
     @ResponseBody
     public JSONArray CommoditySearch(HttpServletRequest request) {
         JSONArray jsonArray = new JSONArray(); 
-        CommodityInfoExample commodityInfoExample = new CommodityInfoExample();
-        Criteria criteria = commodityInfoExample.createCriteria();
+        InInventoryExample inInventoryExample = new InInventoryExample();
+        Criteria criteria = inInventoryExample.createCriteria();
         int type = Integer.parseInt(request.getParameter("type"));
         int size = Integer.parseInt(request.getParameter("size"));
         int style = Integer.parseInt(request.getParameter("style"));
@@ -55,14 +61,25 @@ public class CommodityController {
         if(StringUtils.isNotEmpty(bar)) {
             criteria.andCommodityBarEqualTo(bar);
         }
-        List<CommodityInfo> resList = commodityInfoService.commodityInfoSearch(commodityInfoExample);
+        List<InInventory> resList = inInventoryService.getInventory(inInventoryExample);
         
-        for(CommodityInfo arr : resList) {
-        	JSONObject jsonObject = new JSONObject();
-        	jsonObject.put("bar", arr.getCommodityBar());
-        	jsonObject.put("name", arr.getCommodityName());
-        	jsonObject.put("market", arr.getCommodityMarket());
-        	
+        for(InInventory arr : resList) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("bar", arr.getCommodityInfo().getCommodityBar());
+            jsonObject.put("name", arr.getCommodityInfo().getCommodityName());
+            jsonObject.put("market", arr.getCommodityInfo().getCommodityMarket());
+            jsonObject.put("state", arr.getCommodityInfo().getShelvesState());
+            jsonObject.put("style", arr.getCommodityInfo().getStyle());
+            jsonObject.put("color", arr.getCommodityInfo().getColor());
+            jsonObject.put("size", arr.getCommodityInfo().getSize());
+            jsonObject.put("type", arr.getCommodityInfo().getType());
+            jsonObject.put("inNumber", arr.getInNumber());
+            jsonObject.put("unitPrice", arr.getUnitPrice());
+            jsonObject.put("commdityTotal", arr.getCommdityTotal());
+            jsonObject.put("inType", arr.getInType());
+            jsonObject.put("brokerage", arr.getBrokerage());
+            jsonObject.put("commdityUnit", arr.getCommdityUnit());
+            jsonObject.put("inDate", arr.getInDate());
             jsonArray.add(jsonObject);
         }
         

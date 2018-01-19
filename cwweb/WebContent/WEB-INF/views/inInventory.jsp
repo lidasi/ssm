@@ -38,7 +38,9 @@ pageContext.setAttribute("webpath", path);
     </head>
   
      <body>
-        <h1 class="page-header">入库信息</h1>
+        <h1 class="page-header">入库信息
+             <small style="float: right;"><button type='button' class='btn btn-info btn-md' data-toggle="tooltip" data-placement="left" title="添加一条入库信息" onclick="addInInventry()"><span class='glyphicon glyphicon-plus'></span></button></small>
+        </h1>
         
         <div class="col-sm-12 col-md-12 main">
         <div class="row placeholders">
@@ -135,13 +137,34 @@ pageContext.setAttribute("webpath", path);
                     <button id="Style_div_btn" type="button" style="float: right; border:none; background-color: #fff" >×</button>
             </div>
         </div>
-        <hr>
+        <br>
         <hr>
         <div class="row placeholders">
 	         <h2 class="sub-header">库存详情</h2>
 	          <div class="table-responsive">
-	            <table id="commdityTable" class="table table-hover">
-	             
+	            <table id="commdityTable" class="table table-hover text-nowrap table-condensed table-bordered" >
+	               <thead>
+	                   <tr>
+	                       <th>序号</th>
+	                       <th>商品编号</th>
+	                       <th>商品名称</th> 
+	                       <th>商品价格</th>
+	                       <th>款式</th>
+	                       <th>颜色</th>
+	                       <th>尺码</th>
+	                       <th>类型</th>
+	                       <th>入库数量</th>
+	                       <th>单价</th>
+	                       <th>总价</th>
+	                       <th>入库类型</th>
+	                       <th>经手人</th>
+	                       <th>单位</th>
+	                       <th>入库时间</th>
+	                       <th>操作</th>
+	                   </tr>
+	               </thead>
+	               <tbody id = "tbody">
+	               </tbody>
 	            </table>
 	          </div>
             </div>

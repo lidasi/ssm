@@ -55,8 +55,8 @@
     
     
     <!-- 扫描所有的mapper接口的实现，让这些mapper能够自动注入；base-package：指定mapper接口的包名
-    老版：<property name="basePackage" value="com.softjx.dao"></property>
-    新版： <mybatis-spring:scan base-package="com.softjx.dao"/>
+    老版：<property name="basePackage" value="com.com.dao"></property>
+    新版： <mybatis-spring:scan base-package="com.com.dao"/>
      -->
      
     <!--  <mybatis-spring:scan base-package="com.softjx.dao"/>-->

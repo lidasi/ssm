@@ -17,6 +17,8 @@ public interface InInventoryMapper {
     int insertSelective(InInventory record);
 
     List<InInventory> selectByExample(InInventoryExample example);
+    
+    List<InInventory> getInventory(InInventoryExample example);
 
     InInventory selectByPrimaryKey(Integer addressId);
 

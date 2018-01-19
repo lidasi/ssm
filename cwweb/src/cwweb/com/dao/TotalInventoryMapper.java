@@ -21,6 +21,8 @@ public interface TotalInventoryMapper {
     List<TotalInventory> selectByExample(TotalInventoryExample example);
 
     TotalInventory selectByPrimaryKey(Integer totalinId);
+    
+    List<TotalInventory> selectTotalInventory(TotalInventoryExample example);
 
     int updateByExampleSelective(@Param("record") TotalInventory record, @Param("example") TotalInventoryExample example);
 

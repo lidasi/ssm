@@ -320,4 +320,72 @@
       update_date = #{updateDate,jdbcType=VARCHAR}
     where address_id = #{addressId,jdbcType=INTEGER}
   </update>
+  
+    <resultMap id="InventoryCommdity" type="cwweb.com.model.InInventory" >
+        <id column="address_id" property="addressId" jdbcType="INTEGER" />
+        <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+        <result column="commdity_id" property="commdityId" jdbcType="INTEGER" />
+        <result column="unit_price" property="unitPrice" jdbcType="VARCHAR" />
+        <result column="commdity_total" property="commdityTotal" jdbcType="VARCHAR" />
+        <result column="in_number" property="inNumber" jdbcType="INTEGER" />
+        <result column="commdity_unit" property="commdityUnit" jdbcType="INTEGER" />
+        <result column="in_type" property="inType" jdbcType="INTEGER" />
+        <result column="brokerage" property="brokerage" jdbcType="VARCHAR" />
+        <result column="in_date" property="inDate" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+        <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    
+        <!--commdityInfo属性关联字段-->
+        <association property="commodityInfo" javaType="cwweb.com.model.CommodityInfo">
+            <id column="c_id" property="commodityId"/>
+            <result column="c_name" property="commodityName" jdbcType="VARCHAR" />
+            <result column="c_bar" property="commodityBar" jdbcType="VARCHAR" />
+            <result column="c_market" property="commodityMarket" jdbcType="VARCHAR" />
+            <result column="shelves_state" property="shelvesState" jdbcType="INTEGER" />
+            <result column="style" property="style" jdbcType="INTEGER" />
+            <result column="color" property="color" jdbcType="INTEGER" />
+            <result column="size" property="size" jdbcType="INTEGER" />
+            <result column="type" property="type" jdbcType="INTEGER" />
+            <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+            <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+        </association>
+    </resultMap>
+    <sql id="getInventoryPropert">
+        b.commodity_id as c_id, 
+        b.commodity_name as c_name, 
+        b.commodity_bar as c_bar, 
+        b.commodity_market as c_market, 
+        b.shelves_state as shelves_state, 
+        b.style as style, 
+        b.color as color, 
+        b.size as size, 
+        b.type as type, 
+        b.update_date as update_date, 
+        b.create_date as create_date, 
+        a.address_id, a.uuid, 
+        a.commdity_id, unit_price,
+        a.commdity_total, 
+        a.in_number, 
+        a.commdity_unit, 
+        a.in_type, 
+        a.brokerage, 
+        a.in_date, 
+        a.create_date, 
+        a.update_date
+    </sql>
+    <select id="getInventory" resultMap="InventoryCommdity">
+         select
+         <if test="distinct">
+            distinct
+         </if>
+         <include refid="getInventoryPropert" />
+         FROM in_inventory a LEFT JOIN commodity_info b
+         ON a.commdity_id = b.commodity_id
+         <if test="_parameter != null">
+          <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+          order by ${orderByClause}
+        </if>
+    </select>
 </mapper>
