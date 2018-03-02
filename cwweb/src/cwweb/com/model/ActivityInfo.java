@@ -5,7 +5,7 @@ public class ActivityInfo {
 
     private Integer commodityId;
 
-    private String activityPrice;
+    private Double activityPrice;
 
     private String startDate;
 
@@ -27,12 +27,12 @@ public class ActivityInfo {
         this.commodityId = commodityId;
     }
 
-    public String getActivityPrice() {
+    public Double getActivityPrice() {
         return activityPrice;
     }
 
-    public void setActivityPrice(String activityPrice) {
-        this.activityPrice = activityPrice == null ? null : activityPrice.trim();
+    public void setActivityPrice(Double activityPrice) {
+        this.activityPrice = activityPrice;
     }
 
     public String getStartDate() {

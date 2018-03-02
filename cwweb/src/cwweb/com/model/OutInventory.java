@@ -3,9 +3,9 @@ package cwweb.com.model;
 public class OutInventory {
     private Integer outinId;
 
-    private String uuid;
+    private Integer totalId;
 
-    private Integer commodityId;
+    private String uuid;
 
     private Integer outNumber;
 
@@ -29,20 +29,20 @@ public class OutInventory {
         this.outinId = outinId;
     }
 
+    public Integer getTotalId() {
+        return totalId;
+    }
+
+    public void setTotalId(Integer totalId) {
+        this.totalId = totalId;
+    }
+
     public String getUuid() {
         return uuid;
     }
 
     public void setUuid(String uuid) {
         this.uuid = uuid == null ? null : uuid.trim();
-    }
-
-    public Integer getCommodityId() {
-        return commodityId;
-    }
-
-    public void setCommodityId(Integer commodityId) {
-        this.commodityId = commodityId;
     }
 
     public Integer getOutNumber() {

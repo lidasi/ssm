@@ -314,62 +314,52 @@ public class CommodityInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketEqualTo(String value) {
+        public Criteria andCommodityMarketEqualTo(Double value) {
             addCriterion("commodity_market =", value, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketNotEqualTo(String value) {
+        public Criteria andCommodityMarketNotEqualTo(Double value) {
             addCriterion("commodity_market <>", value, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketGreaterThan(String value) {
+        public Criteria andCommodityMarketGreaterThan(Double value) {
             addCriterion("commodity_market >", value, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketGreaterThanOrEqualTo(String value) {
+        public Criteria andCommodityMarketGreaterThanOrEqualTo(Double value) {
             addCriterion("commodity_market >=", value, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketLessThan(String value) {
+        public Criteria andCommodityMarketLessThan(Double value) {
             addCriterion("commodity_market <", value, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketLessThanOrEqualTo(String value) {
+        public Criteria andCommodityMarketLessThanOrEqualTo(Double value) {
             addCriterion("commodity_market <=", value, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketLike(String value) {
-            addCriterion("commodity_market like", value, "commodityMarket");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityMarketNotLike(String value) {
-            addCriterion("commodity_market not like", value, "commodityMarket");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityMarketIn(List<String> values) {
+        public Criteria andCommodityMarketIn(List<Double> values) {
             addCriterion("commodity_market in", values, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketNotIn(List<String> values) {
+        public Criteria andCommodityMarketNotIn(List<Double> values) {
             addCriterion("commodity_market not in", values, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketBetween(String value1, String value2) {
+        public Criteria andCommodityMarketBetween(Double value1, Double value2) {
             addCriterion("commodity_market between", value1, value2, "commodityMarket");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityMarketNotBetween(String value1, String value2) {
+        public Criteria andCommodityMarketNotBetween(Double value1, Double value2) {
             addCriterion("commodity_market not between", value1, value2, "commodityMarket");
             return (Criteria) this;
         }

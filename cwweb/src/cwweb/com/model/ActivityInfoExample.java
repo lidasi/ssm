@@ -234,62 +234,52 @@ public class ActivityInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceEqualTo(String value) {
+        public Criteria andActivityPriceEqualTo(Double value) {
             addCriterion("activity_price =", value, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceNotEqualTo(String value) {
+        public Criteria andActivityPriceNotEqualTo(Double value) {
             addCriterion("activity_price <>", value, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceGreaterThan(String value) {
+        public Criteria andActivityPriceGreaterThan(Double value) {
             addCriterion("activity_price >", value, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceGreaterThanOrEqualTo(String value) {
+        public Criteria andActivityPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("activity_price >=", value, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceLessThan(String value) {
+        public Criteria andActivityPriceLessThan(Double value) {
             addCriterion("activity_price <", value, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceLessThanOrEqualTo(String value) {
+        public Criteria andActivityPriceLessThanOrEqualTo(Double value) {
             addCriterion("activity_price <=", value, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceLike(String value) {
-            addCriterion("activity_price like", value, "activityPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andActivityPriceNotLike(String value) {
-            addCriterion("activity_price not like", value, "activityPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andActivityPriceIn(List<String> values) {
+        public Criteria andActivityPriceIn(List<Double> values) {
             addCriterion("activity_price in", values, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceNotIn(List<String> values) {
+        public Criteria andActivityPriceNotIn(List<Double> values) {
             addCriterion("activity_price not in", values, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceBetween(String value1, String value2) {
+        public Criteria andActivityPriceBetween(Double value1, Double value2) {
             addCriterion("activity_price between", value1, value2, "activityPrice");
             return (Criteria) this;
         }
 
-        public Criteria andActivityPriceNotBetween(String value1, String value2) {
+        public Criteria andActivityPriceNotBetween(Double value1, Double value2) {
             addCriterion("activity_price not between", value1, value2, "activityPrice");
             return (Criteria) this;
         }

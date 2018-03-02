@@ -5,7 +5,7 @@
     <id column="totalin_id" property="totalinId" jdbcType="INTEGER" />
     <result column="uuid" property="uuid" jdbcType="VARCHAR" />
     <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
-    <result column="total_number" property="totalNumber" jdbcType="VARCHAR" />
+    <result column="total_number" property="totalNumber" jdbcType="INTEGER" />
     <result column="commdity_unit" property="commdityUnit" jdbcType="INTEGER" />
     <result column="create_date" property="createDate" jdbcType="VARCHAR" />
     <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
@@ -106,7 +106,7 @@
       total_number, commdity_unit, create_date, 
       update_date)
     values (#{totalinId,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{commodityId,jdbcType=INTEGER}, 
-      #{totalNumber,jdbcType=VARCHAR}, #{commdityUnit,jdbcType=INTEGER}, #{createDate,jdbcType=VARCHAR}, 
+      #{totalNumber,jdbcType=INTEGER}, #{commdityUnit,jdbcType=INTEGER}, #{createDate,jdbcType=VARCHAR}, 
       #{updateDate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cwweb.com.model.TotalInventory" >
@@ -145,7 +145,7 @@
         #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="totalNumber != null" >
-        #{totalNumber,jdbcType=VARCHAR},
+        #{totalNumber,jdbcType=INTEGER},
       </if>
       <if test="commdityUnit != null" >
         #{commdityUnit,jdbcType=INTEGER},
@@ -177,7 +177,7 @@
         commodity_id = #{record.commodityId,jdbcType=INTEGER},
       </if>
       <if test="record.totalNumber != null" >
-        total_number = #{record.totalNumber,jdbcType=VARCHAR},
+        total_number = #{record.totalNumber,jdbcType=INTEGER},
       </if>
       <if test="record.commdityUnit != null" >
         commdity_unit = #{record.commdityUnit,jdbcType=INTEGER},
@@ -198,7 +198,7 @@
     set totalin_id = #{record.totalinId,jdbcType=INTEGER},
       uuid = #{record.uuid,jdbcType=VARCHAR},
       commodity_id = #{record.commodityId,jdbcType=INTEGER},
-      total_number = #{record.totalNumber,jdbcType=VARCHAR},
+      total_number = #{record.totalNumber,jdbcType=INTEGER},
       commdity_unit = #{record.commdityUnit,jdbcType=INTEGER},
       create_date = #{record.createDate,jdbcType=VARCHAR},
       update_date = #{record.updateDate,jdbcType=VARCHAR}
@@ -216,7 +216,7 @@
         commodity_id = #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="totalNumber != null" >
-        total_number = #{totalNumber,jdbcType=VARCHAR},
+        total_number = #{totalNumber,jdbcType=INTEGER},
       </if>
       <if test="commdityUnit != null" >
         commdity_unit = #{commdityUnit,jdbcType=INTEGER},
@@ -234,7 +234,7 @@
     update total_inventory
     set uuid = #{uuid,jdbcType=VARCHAR},
       commodity_id = #{commodityId,jdbcType=INTEGER},
-      total_number = #{totalNumber,jdbcType=VARCHAR},
+      total_number = #{totalNumber,jdbcType=INTEGER},
       commdity_unit = #{commdityUnit,jdbcType=INTEGER},
       create_date = #{createDate,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=VARCHAR}

@@ -39,8 +39,37 @@ pageContext.setAttribute("webpath", path);
   
      <body>
         <h1 class="page-header">入库信息
-             <small style="float: right;"><button type='button' class='btn btn-info btn-md' data-toggle="tooltip" data-placement="left" title="添加一条入库信息" onclick="addInInventry()"><span class='glyphicon glyphicon-plus'></span></button></small>
+             <small style="float: right;"><button type='button' class='btn btn-info btn-md' data-toggle="modal" data-target="#exampleModal" data-placement="left" title="添加一条入库信息"><span class='glyphicon glyphicon-plus'></span></button></small>
         </h1>
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="exampleModalLabel">添加入库商品信息</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form class="form-group col-sm-offset-3" id="addInInventryForm">
+		            <div class="form-group"> 商品编号:<input type="text" id="addBar" name="bar"></div>
+		            <div class="form-group">入库数量:<input onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" type="text" id="addInNumber" name="inNumber"></div>
+		            <div class="form-group">商品单价:<input onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" type="text" id="addUnitPrice" name="unitPrice"></div>
+		            <div class="form-group">入库类型:
+		                <select class="" name="c_in_type">
+                            <option value="0" selected = "selected">自经销商</option>
+                            <option value="1">退货入库</option>
+                        </select>
+                    </div>
+		            <div class="form-group">经手人 &nbsp;&nbsp;&nbsp;:<input type="text" id="addBrokerage" name="brokerage"></div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" id="addInInventryChange" class="btn btn-primary col-sm-2 col-sm-offset-4">提交</button>
+		        <button type="button" class="btn btn-default col-sm-2 col-sm-offset-2" data-dismiss="modal">关闭</button>
+		      </div>
+            </div>
+        </div>
+    </div>
         
         <div class="col-sm-12 col-md-12 main">
         <div class="row placeholders">
@@ -60,7 +89,6 @@ pageContext.setAttribute("webpath", path);
 		            <option value="1">休闲</option>
 		            <option value="2">老年装</option>
 		        </select>
-                
             </div>
             <div class="form-group col-sm-2 col-md-2" style="height: 10px">
                 <label for="commoditySize">尺码</label>
@@ -100,9 +128,7 @@ pageContext.setAttribute("webpath", path);
                     <option value="2">秋装</option>
                     <option value="3">冬装</option>
                     <option value="4">四季装</option>
-                  
                 </select>
-                
             </div>
 			<div class="form-group col-sm-1 col-md-1">
 			     <label for="search">检索</label>
@@ -148,7 +174,7 @@ pageContext.setAttribute("webpath", path);
 	                       <th>序号</th>
 	                       <th>商品编号</th>
 	                       <th>商品名称</th> 
-	                       <th>商品价格</th>
+	                       <th>在售价格</th>
 	                       <th>款式</th>
 	                       <th>颜色</th>
 	                       <th>尺码</th>

@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="cwweb.com.model.SaleResume" >
     <id column="sale_id" property="saleId" jdbcType="INTEGER" />
     <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
-    <result column="sale_price" property="salePrice" jdbcType="VARCHAR" />
+    <result column="sale_price" property="salePrice" jdbcType="DOUBLE" />
     <result column="sale_number" property="saleNumber" jdbcType="INTEGER" />
-    <result column="sale_total" property="saleTotal" jdbcType="VARCHAR" />
+    <result column="sale_total" property="saleTotal" jdbcType="DOUBLE" />
     <result column="brokerage" property="brokerage" jdbcType="VARCHAR" />
     <result column="commdity_unit" property="commdityUnit" jdbcType="INTEGER" />
     <result column="del_flag" property="delFlag" jdbcType="INTEGER" />
@@ -111,8 +111,8 @@
       sale_number, sale_total, brokerage, 
       commdity_unit, del_flag, sale_date, 
       create_date, update_date)
-    values (#{saleId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, #{salePrice,jdbcType=VARCHAR}, 
-      #{saleNumber,jdbcType=INTEGER}, #{saleTotal,jdbcType=VARCHAR}, #{brokerage,jdbcType=VARCHAR}, 
+    values (#{saleId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, #{salePrice,jdbcType=DOUBLE}, 
+      #{saleNumber,jdbcType=INTEGER}, #{saleTotal,jdbcType=DOUBLE}, #{brokerage,jdbcType=VARCHAR}, 
       #{commdityUnit,jdbcType=INTEGER}, #{delFlag,jdbcType=INTEGER}, #{saleDate,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR})
   </insert>
@@ -161,13 +161,13 @@
         #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="salePrice != null" >
-        #{salePrice,jdbcType=VARCHAR},
+        #{salePrice,jdbcType=DOUBLE},
       </if>
       <if test="saleNumber != null" >
         #{saleNumber,jdbcType=INTEGER},
       </if>
       <if test="saleTotal != null" >
-        #{saleTotal,jdbcType=VARCHAR},
+        #{saleTotal,jdbcType=DOUBLE},
       </if>
       <if test="brokerage != null" >
         #{brokerage,jdbcType=VARCHAR},
@@ -205,13 +205,13 @@
         commodity_id = #{record.commodityId,jdbcType=INTEGER},
       </if>
       <if test="record.salePrice != null" >
-        sale_price = #{record.salePrice,jdbcType=VARCHAR},
+        sale_price = #{record.salePrice,jdbcType=DOUBLE},
       </if>
       <if test="record.saleNumber != null" >
         sale_number = #{record.saleNumber,jdbcType=INTEGER},
       </if>
       <if test="record.saleTotal != null" >
-        sale_total = #{record.saleTotal,jdbcType=VARCHAR},
+        sale_total = #{record.saleTotal,jdbcType=DOUBLE},
       </if>
       <if test="record.brokerage != null" >
         brokerage = #{record.brokerage,jdbcType=VARCHAR},
@@ -240,9 +240,9 @@
     update sale_resume
     set sale_id = #{record.saleId,jdbcType=INTEGER},
       commodity_id = #{record.commodityId,jdbcType=INTEGER},
-      sale_price = #{record.salePrice,jdbcType=VARCHAR},
+      sale_price = #{record.salePrice,jdbcType=DOUBLE},
       sale_number = #{record.saleNumber,jdbcType=INTEGER},
-      sale_total = #{record.saleTotal,jdbcType=VARCHAR},
+      sale_total = #{record.saleTotal,jdbcType=DOUBLE},
       brokerage = #{record.brokerage,jdbcType=VARCHAR},
       commdity_unit = #{record.commdityUnit,jdbcType=INTEGER},
       del_flag = #{record.delFlag,jdbcType=INTEGER},
@@ -260,13 +260,13 @@
         commodity_id = #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="salePrice != null" >
-        sale_price = #{salePrice,jdbcType=VARCHAR},
+        sale_price = #{salePrice,jdbcType=DOUBLE},
       </if>
       <if test="saleNumber != null" >
         sale_number = #{saleNumber,jdbcType=INTEGER},
       </if>
       <if test="saleTotal != null" >
-        sale_total = #{saleTotal,jdbcType=VARCHAR},
+        sale_total = #{saleTotal,jdbcType=DOUBLE},
       </if>
       <if test="brokerage != null" >
         brokerage = #{brokerage,jdbcType=VARCHAR},
@@ -292,9 +292,9 @@
   <update id="updateByPrimaryKey" parameterType="cwweb.com.model.SaleResume" >
     update sale_resume
     set commodity_id = #{commodityId,jdbcType=INTEGER},
-      sale_price = #{salePrice,jdbcType=VARCHAR},
+      sale_price = #{salePrice,jdbcType=DOUBLE},
       sale_number = #{saleNumber,jdbcType=INTEGER},
-      sale_total = #{saleTotal,jdbcType=VARCHAR},
+      sale_total = #{saleTotal,jdbcType=DOUBLE},
       brokerage = #{brokerage,jdbcType=VARCHAR},
       commdity_unit = #{commdityUnit,jdbcType=INTEGER},
       del_flag = #{delFlag,jdbcType=INTEGER},

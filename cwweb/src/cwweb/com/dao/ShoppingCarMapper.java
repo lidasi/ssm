@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.ShoppingCar;
 import cwweb.com.model.ShoppingCarExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ShoppingCarMapper {
     int countByExample(ShoppingCarExample example);

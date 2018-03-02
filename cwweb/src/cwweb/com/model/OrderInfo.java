@@ -11,15 +11,19 @@ public class OrderInfo {
 
     private String number;
 
-    private String total;
+    private Double total;
 
-    private String unitPrice;
+    private Double unitPrice;
 
     private Integer paymentMethod;
 
     private String purchaseDate;
 
     private Integer orderType;
+
+    private Integer freightType;
+
+    private Integer paymentInfo;
 
     private String updateDate;
 
@@ -65,20 +69,20 @@ public class OrderInfo {
         this.number = number == null ? null : number.trim();
     }
 
-    public String getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
-        this.total = total == null ? null : total.trim();
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
-    public String getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(String unitPrice) {
-        this.unitPrice = unitPrice == null ? null : unitPrice.trim();
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public Integer getPaymentMethod() {
@@ -103,6 +107,22 @@ public class OrderInfo {
 
     public void setOrderType(Integer orderType) {
         this.orderType = orderType;
+    }
+
+    public Integer getFreightType() {
+        return freightType;
+    }
+
+    public void setFreightType(Integer freightType) {
+        this.freightType = freightType;
+    }
+
+    public Integer getPaymentInfo() {
+        return paymentInfo;
+    }
+
+    public void setPaymentInfo(Integer paymentInfo) {
+        this.paymentInfo = paymentInfo;
     }
 
     public String getUpdateDate() {

@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.UserLogin;
 import cwweb.com.model.UserLoginExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserLoginMapper {
     int countByExample(UserLoginExample example);

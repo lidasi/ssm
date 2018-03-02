@@ -234,62 +234,52 @@ public class SaleResumeExample {
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceEqualTo(String value) {
+        public Criteria andSalePriceEqualTo(Double value) {
             addCriterion("sale_price =", value, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceNotEqualTo(String value) {
+        public Criteria andSalePriceNotEqualTo(Double value) {
             addCriterion("sale_price <>", value, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceGreaterThan(String value) {
+        public Criteria andSalePriceGreaterThan(Double value) {
             addCriterion("sale_price >", value, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceGreaterThanOrEqualTo(String value) {
+        public Criteria andSalePriceGreaterThanOrEqualTo(Double value) {
             addCriterion("sale_price >=", value, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceLessThan(String value) {
+        public Criteria andSalePriceLessThan(Double value) {
             addCriterion("sale_price <", value, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceLessThanOrEqualTo(String value) {
+        public Criteria andSalePriceLessThanOrEqualTo(Double value) {
             addCriterion("sale_price <=", value, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceLike(String value) {
-            addCriterion("sale_price like", value, "salePrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andSalePriceNotLike(String value) {
-            addCriterion("sale_price not like", value, "salePrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andSalePriceIn(List<String> values) {
+        public Criteria andSalePriceIn(List<Double> values) {
             addCriterion("sale_price in", values, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceNotIn(List<String> values) {
+        public Criteria andSalePriceNotIn(List<Double> values) {
             addCriterion("sale_price not in", values, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceBetween(String value1, String value2) {
+        public Criteria andSalePriceBetween(Double value1, Double value2) {
             addCriterion("sale_price between", value1, value2, "salePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSalePriceNotBetween(String value1, String value2) {
+        public Criteria andSalePriceNotBetween(Double value1, Double value2) {
             addCriterion("sale_price not between", value1, value2, "salePrice");
             return (Criteria) this;
         }
@@ -364,62 +354,52 @@ public class SaleResumeExample {
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalEqualTo(String value) {
+        public Criteria andSaleTotalEqualTo(Double value) {
             addCriterion("sale_total =", value, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalNotEqualTo(String value) {
+        public Criteria andSaleTotalNotEqualTo(Double value) {
             addCriterion("sale_total <>", value, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalGreaterThan(String value) {
+        public Criteria andSaleTotalGreaterThan(Double value) {
             addCriterion("sale_total >", value, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalGreaterThanOrEqualTo(String value) {
+        public Criteria andSaleTotalGreaterThanOrEqualTo(Double value) {
             addCriterion("sale_total >=", value, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalLessThan(String value) {
+        public Criteria andSaleTotalLessThan(Double value) {
             addCriterion("sale_total <", value, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalLessThanOrEqualTo(String value) {
+        public Criteria andSaleTotalLessThanOrEqualTo(Double value) {
             addCriterion("sale_total <=", value, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalLike(String value) {
-            addCriterion("sale_total like", value, "saleTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleTotalNotLike(String value) {
-            addCriterion("sale_total not like", value, "saleTotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleTotalIn(List<String> values) {
+        public Criteria andSaleTotalIn(List<Double> values) {
             addCriterion("sale_total in", values, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalNotIn(List<String> values) {
+        public Criteria andSaleTotalNotIn(List<Double> values) {
             addCriterion("sale_total not in", values, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalBetween(String value1, String value2) {
+        public Criteria andSaleTotalBetween(Double value1, Double value2) {
             addCriterion("sale_total between", value1, value2, "saleTotal");
             return (Criteria) this;
         }
 
-        public Criteria andSaleTotalNotBetween(String value1, String value2) {
+        public Criteria andSaleTotalNotBetween(Double value1, Double value2) {
             addCriterion("sale_total not between", value1, value2, "saleTotal");
             return (Criteria) this;
         }

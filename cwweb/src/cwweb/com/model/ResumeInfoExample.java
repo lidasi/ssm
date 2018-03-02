@@ -424,62 +424,52 @@ public class ResumeInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyEqualTo(String value) {
+        public Criteria andTransactionMoneyEqualTo(Double value) {
             addCriterion("transaction_money =", value, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyNotEqualTo(String value) {
+        public Criteria andTransactionMoneyNotEqualTo(Double value) {
             addCriterion("transaction_money <>", value, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyGreaterThan(String value) {
+        public Criteria andTransactionMoneyGreaterThan(Double value) {
             addCriterion("transaction_money >", value, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyGreaterThanOrEqualTo(String value) {
+        public Criteria andTransactionMoneyGreaterThanOrEqualTo(Double value) {
             addCriterion("transaction_money >=", value, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyLessThan(String value) {
+        public Criteria andTransactionMoneyLessThan(Double value) {
             addCriterion("transaction_money <", value, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyLessThanOrEqualTo(String value) {
+        public Criteria andTransactionMoneyLessThanOrEqualTo(Double value) {
             addCriterion("transaction_money <=", value, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyLike(String value) {
-            addCriterion("transaction_money like", value, "transactionMoney");
-            return (Criteria) this;
-        }
-
-        public Criteria andTransactionMoneyNotLike(String value) {
-            addCriterion("transaction_money not like", value, "transactionMoney");
-            return (Criteria) this;
-        }
-
-        public Criteria andTransactionMoneyIn(List<String> values) {
+        public Criteria andTransactionMoneyIn(List<Double> values) {
             addCriterion("transaction_money in", values, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyNotIn(List<String> values) {
+        public Criteria andTransactionMoneyNotIn(List<Double> values) {
             addCriterion("transaction_money not in", values, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyBetween(String value1, String value2) {
+        public Criteria andTransactionMoneyBetween(Double value1, Double value2) {
             addCriterion("transaction_money between", value1, value2, "transactionMoney");
             return (Criteria) this;
         }
 
-        public Criteria andTransactionMoneyNotBetween(String value1, String value2) {
+        public Criteria andTransactionMoneyNotBetween(Double value1, Double value2) {
             addCriterion("transaction_money not between", value1, value2, "transactionMoney");
             return (Criteria) this;
         }

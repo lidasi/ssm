@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.OrderInfo;
 import cwweb.com.model.OrderInfoExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface OrderInfoMapper {
     int countByExample(OrderInfoExample example);

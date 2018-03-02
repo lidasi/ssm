@@ -9,7 +9,7 @@ public class RefundInfo {
 
     private Integer commodityId;
 
-    private String refundPrice;
+    private Double refundPrice;
 
     private String refundDate;
 
@@ -49,12 +49,12 @@ public class RefundInfo {
         this.commodityId = commodityId;
     }
 
-    public String getRefundPrice() {
+    public Double getRefundPrice() {
         return refundPrice;
     }
 
-    public void setRefundPrice(String refundPrice) {
-        this.refundPrice = refundPrice == null ? null : refundPrice.trim();
+    public void setRefundPrice(Double refundPrice) {
+        this.refundPrice = refundPrice;
     }
 
     public String getRefundDate() {

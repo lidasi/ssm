@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.UserInfo;
 import cwweb.com.model.UserInfoExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserInfoMapper {
     int countByExample(UserInfoExample example);

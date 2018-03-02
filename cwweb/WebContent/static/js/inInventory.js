@@ -282,11 +282,9 @@ $("#commodityName").change(function(){
                         }
                     	
                     	
-                        if(i%2 != 0) {
-                            str += "<tr class='success'>"
-                        } else {
-                            str += "<tr class='info'>"
-                        }
+                        
+                       str += "<tr class='default' id='commdityInfo'>"
+                       
                         
                         if(count < 10) {
                             str += "<td>" + "0" + count + "</td>";
@@ -309,17 +307,19 @@ $("#commodityName").change(function(){
                         str += "<td>" + cUnit + "</td>";
                         str += "<td>" + result[i].inDate + "</td>";
                         str +="<td>"
-                        str +=     "<button type='button' class='btn btn-warning btn-xs' data-toggle='tooltip' data-placement='left' title='修改这条入库信息'>"
+                        str +=     "<button type='button' onclick='updInInventry()' id='updInInventry' class='btn btn-warning btn-xs' data-toggle='tooltip' data-placement='left' title='修改这条入库信息'>"
                         str +=          "<span class='glyphicon glyphicon-edit'></span>"
                         str +=     "</button>"
                         str += 		"&nbsp;&nbsp;"
-                        str +=     "<button type='button' class='btn btn-danger btn-xs' data-toggle='tooltip' data-placement='left' title='删除这条入库信息'>"
+                        str +=     "<button type='button' onclick='delInInventry()' id='delInInventry' class='btn btn-danger btn-xs' data-toggle='tooltip' data-placement='left' title='删除这条入库信息'>"
                         str +=         "<span class='glyphicon glyphicon-remove-sign'></span>"
                         str +=     "</button>"
                         str +="</td>"
                         str +="</tr>";
+                        
                     }
                     $("#tbody").append(str);
+                    
                 } else {
                     $("#tbody").html("");
                 };
@@ -329,8 +329,60 @@ $("#commodityName").change(function(){
               }
          });
     });
+    
+    $("#addInInventryChange").click(function() {
+    	if ($("#addBar").val() == null || $("#addBar").val() == "") {
+    		alert("请输入商品编号")
+    		return "";
+    	}
+    	if ($("#addInNumber").val() == null || $("#addInNumber").val() == "") {
+    		alert("请输入入库数量")
+    		return "";
+    	}
+    	if ($("#addUnitPrice").val() == null || $("#addUnitPrice").val() == "") {
+    		alert("请输入商品单价")
+    		return "";
+    	}
+    	if ($("#addBrokerage").val() == null || $("#addBrokerage").val() == "") {
+    		alert("请输入经手人")
+    		return "";
+    	}
+    	addInInventry();
+    })
 });
 
 var addInInventry = function() {
+	$.ajax({
+		type:'POST',
+		dataType: "json",//预期服务器返回的数据类型
+        url: "user/addInInventry" ,//url
+        async: true,
+        data: $('#addInInventryForm').serialize(),
+        success: function (result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            if (result == 200) {
+                alert("添加成功");
+                $("#addBar").val() == "";
+                $("#addInNumber").val() == "";
+                $("#addUnitPrice").val() == "";
+                $("#addBrokerage").val() == "";
+            }
+            if (result == 400) {
+            	alert("填写信息不完整")
+            }
+            if (result == 401) {
+            	alert("没有这条商品信息")
+            }
+        },
+        error : function() {
+            alert("系统异常！");
+        }
+	})
+}
+var updInInventry = function() {
+	console.log("修改")
+}
+
+var delInInventry = function() {
 	
 }

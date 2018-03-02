@@ -7,15 +7,13 @@ public class TotalInventory {
 
     private Integer commodityId;
 
-    private String totalNumber;
+    private Integer totalNumber;
 
     private Integer commdityUnit;
 
     private String createDate;
 
     private String updateDate;
-    
-    private CommodityInfo commodityInfo;
 
     public Integer getTotalinId() {
         return totalinId;
@@ -41,12 +39,12 @@ public class TotalInventory {
         this.commodityId = commodityId;
     }
 
-    public String getTotalNumber() {
+    public Integer getTotalNumber() {
         return totalNumber;
     }
 
-    public void setTotalNumber(String totalNumber) {
-        this.totalNumber = totalNumber == null ? null : totalNumber.trim();
+    public void setTotalNumber(Integer totalNumber) {
+        this.totalNumber = totalNumber;
     }
 
     public Integer getCommdityUnit() {
@@ -72,21 +70,4 @@ public class TotalInventory {
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate == null ? null : updateDate.trim();
     }
-
-    public CommodityInfo getCommodityInfo() {
-        return commodityInfo;
-    }
-
-    public void setCommodityInfo(CommodityInfo commodityInfo) {
-        this.commodityInfo = commodityInfo;
-    }
-
-    @Override
-    public String toString() {
-        return "TotalInventory [totalinId=" + totalinId + ", uuid=" + uuid + ", commodityId=" + commodityId
-                + ", totalNumber=" + totalNumber + ", commdityUnit=" + commdityUnit + ", createDate=" + createDate
-                + ", updateDate=" + updateDate + ", commodityInfo=" + commodityInfo + "]";
-    }
-    
-    
 }

@@ -434,62 +434,52 @@ public class OrderInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andTotalEqualTo(String value) {
+        public Criteria andTotalEqualTo(Double value) {
             addCriterion("total =", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNotEqualTo(String value) {
+        public Criteria andTotalNotEqualTo(Double value) {
             addCriterion("total <>", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGreaterThan(String value) {
+        public Criteria andTotalGreaterThan(Double value) {
             addCriterion("total >", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGreaterThanOrEqualTo(String value) {
+        public Criteria andTotalGreaterThanOrEqualTo(Double value) {
             addCriterion("total >=", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalLessThan(String value) {
+        public Criteria andTotalLessThan(Double value) {
             addCriterion("total <", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalLessThanOrEqualTo(String value) {
+        public Criteria andTotalLessThanOrEqualTo(Double value) {
             addCriterion("total <=", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalLike(String value) {
-            addCriterion("total like", value, "total");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalNotLike(String value) {
-            addCriterion("total not like", value, "total");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalIn(List<String> values) {
+        public Criteria andTotalIn(List<Double> values) {
             addCriterion("total in", values, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNotIn(List<String> values) {
+        public Criteria andTotalNotIn(List<Double> values) {
             addCriterion("total not in", values, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalBetween(String value1, String value2) {
+        public Criteria andTotalBetween(Double value1, Double value2) {
             addCriterion("total between", value1, value2, "total");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNotBetween(String value1, String value2) {
+        public Criteria andTotalNotBetween(Double value1, Double value2) {
             addCriterion("total not between", value1, value2, "total");
             return (Criteria) this;
         }
@@ -504,62 +494,52 @@ public class OrderInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceEqualTo(String value) {
+        public Criteria andUnitPriceEqualTo(Double value) {
             addCriterion("unit_price =", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceNotEqualTo(String value) {
+        public Criteria andUnitPriceNotEqualTo(Double value) {
             addCriterion("unit_price <>", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceGreaterThan(String value) {
+        public Criteria andUnitPriceGreaterThan(Double value) {
             addCriterion("unit_price >", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceGreaterThanOrEqualTo(String value) {
+        public Criteria andUnitPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("unit_price >=", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceLessThan(String value) {
+        public Criteria andUnitPriceLessThan(Double value) {
             addCriterion("unit_price <", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceLessThanOrEqualTo(String value) {
+        public Criteria andUnitPriceLessThanOrEqualTo(Double value) {
             addCriterion("unit_price <=", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceLike(String value) {
-            addCriterion("unit_price like", value, "unitPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andUnitPriceNotLike(String value) {
-            addCriterion("unit_price not like", value, "unitPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andUnitPriceIn(List<String> values) {
+        public Criteria andUnitPriceIn(List<Double> values) {
             addCriterion("unit_price in", values, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceNotIn(List<String> values) {
+        public Criteria andUnitPriceNotIn(List<Double> values) {
             addCriterion("unit_price not in", values, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceBetween(String value1, String value2) {
+        public Criteria andUnitPriceBetween(Double value1, Double value2) {
             addCriterion("unit_price between", value1, value2, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andUnitPriceNotBetween(String value1, String value2) {
+        public Criteria andUnitPriceNotBetween(Double value1, Double value2) {
             addCriterion("unit_price not between", value1, value2, "unitPrice");
             return (Criteria) this;
         }
@@ -751,6 +731,126 @@ public class OrderInfoExample {
 
         public Criteria andOrderTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("order_type not between", value1, value2, "orderType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeIsNull() {
+            addCriterion("freight_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeIsNotNull() {
+            addCriterion("freight_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeEqualTo(Integer value) {
+            addCriterion("freight_type =", value, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeNotEqualTo(Integer value) {
+            addCriterion("freight_type <>", value, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeGreaterThan(Integer value) {
+            addCriterion("freight_type >", value, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("freight_type >=", value, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeLessThan(Integer value) {
+            addCriterion("freight_type <", value, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("freight_type <=", value, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeIn(List<Integer> values) {
+            addCriterion("freight_type in", values, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeNotIn(List<Integer> values) {
+            addCriterion("freight_type not in", values, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeBetween(Integer value1, Integer value2) {
+            addCriterion("freight_type between", value1, value2, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andFreightTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("freight_type not between", value1, value2, "freightType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoIsNull() {
+            addCriterion("payment_info is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoIsNotNull() {
+            addCriterion("payment_info is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoEqualTo(Integer value) {
+            addCriterion("payment_info =", value, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoNotEqualTo(Integer value) {
+            addCriterion("payment_info <>", value, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoGreaterThan(Integer value) {
+            addCriterion("payment_info >", value, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("payment_info >=", value, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoLessThan(Integer value) {
+            addCriterion("payment_info <", value, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoLessThanOrEqualTo(Integer value) {
+            addCriterion("payment_info <=", value, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoIn(List<Integer> values) {
+            addCriterion("payment_info in", values, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoNotIn(List<Integer> values) {
+            addCriterion("payment_info not in", values, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoBetween(Integer value1, Integer value2) {
+            addCriterion("payment_info between", value1, value2, "paymentInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentInfoNotBetween(Integer value1, Integer value2) {
+            addCriterion("payment_info not between", value1, value2, "paymentInfo");
             return (Criteria) this;
         }
 

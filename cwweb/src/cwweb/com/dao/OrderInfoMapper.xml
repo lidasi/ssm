@@ -7,11 +7,13 @@
     <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
     <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
     <result column="number" property="number" jdbcType="VARCHAR" />
-    <result column="total" property="total" jdbcType="VARCHAR" />
-    <result column="unit_price" property="unitPrice" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="DOUBLE" />
+    <result column="unit_price" property="unitPrice" jdbcType="DOUBLE" />
     <result column="payment_method" property="paymentMethod" jdbcType="INTEGER" />
     <result column="purchase_date" property="purchaseDate" jdbcType="VARCHAR" />
     <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="freight_type" property="freightType" jdbcType="INTEGER" />
+    <result column="payment_info" property="paymentInfo" jdbcType="INTEGER" />
     <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="VARCHAR" />
   </resultMap>
@@ -75,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     order_id, user_id, order_number, commodity_id, number, total, unit_price, payment_method, 
-    purchase_date, order_type, update_date, create_date
+    purchase_date, order_type, freight_type, payment_info, update_date, create_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cwweb.com.model.OrderInfoExample" >
     select
@@ -111,13 +113,13 @@
     insert into order_info (order_id, user_id, order_number, 
       commodity_id, number, total, 
       unit_price, payment_method, purchase_date, 
-      order_type, update_date, create_date
-      )
+      order_type, freight_type, payment_info, 
+      update_date, create_date)
     values (#{orderId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderNumber,jdbcType=VARCHAR}, 
-      #{commodityId,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{total,jdbcType=VARCHAR}, 
-      #{unitPrice,jdbcType=VARCHAR}, #{paymentMethod,jdbcType=INTEGER}, #{purchaseDate,jdbcType=VARCHAR}, 
-      #{orderType,jdbcType=INTEGER}, #{updateDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}
-      )
+      #{commodityId,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{total,jdbcType=DOUBLE}, 
+      #{unitPrice,jdbcType=DOUBLE}, #{paymentMethod,jdbcType=INTEGER}, #{purchaseDate,jdbcType=VARCHAR}, 
+      #{orderType,jdbcType=INTEGER}, #{freightType,jdbcType=INTEGER}, #{paymentInfo,jdbcType=INTEGER}, 
+      #{updateDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cwweb.com.model.OrderInfo" >
     insert into order_info
@@ -152,6 +154,12 @@
       <if test="orderType != null" >
         order_type,
       </if>
+      <if test="freightType != null" >
+        freight_type,
+      </if>
+      <if test="paymentInfo != null" >
+        payment_info,
+      </if>
       <if test="updateDate != null" >
         update_date,
       </if>
@@ -176,10 +184,10 @@
         #{number,jdbcType=VARCHAR},
       </if>
       <if test="total != null" >
-        #{total,jdbcType=VARCHAR},
+        #{total,jdbcType=DOUBLE},
       </if>
       <if test="unitPrice != null" >
-        #{unitPrice,jdbcType=VARCHAR},
+        #{unitPrice,jdbcType=DOUBLE},
       </if>
       <if test="paymentMethod != null" >
         #{paymentMethod,jdbcType=INTEGER},
@@ -189,6 +197,12 @@
       </if>
       <if test="orderType != null" >
         #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="freightType != null" >
+        #{freightType,jdbcType=INTEGER},
+      </if>
+      <if test="paymentInfo != null" >
+        #{paymentInfo,jdbcType=INTEGER},
       </if>
       <if test="updateDate != null" >
         #{updateDate,jdbcType=VARCHAR},
@@ -223,10 +237,10 @@
         number = #{record.number,jdbcType=VARCHAR},
       </if>
       <if test="record.total != null" >
-        total = #{record.total,jdbcType=VARCHAR},
+        total = #{record.total,jdbcType=DOUBLE},
       </if>
       <if test="record.unitPrice != null" >
-        unit_price = #{record.unitPrice,jdbcType=VARCHAR},
+        unit_price = #{record.unitPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.paymentMethod != null" >
         payment_method = #{record.paymentMethod,jdbcType=INTEGER},
@@ -236,6 +250,12 @@
       </if>
       <if test="record.orderType != null" >
         order_type = #{record.orderType,jdbcType=INTEGER},
+      </if>
+      <if test="record.freightType != null" >
+        freight_type = #{record.freightType,jdbcType=INTEGER},
+      </if>
+      <if test="record.paymentInfo != null" >
+        payment_info = #{record.paymentInfo,jdbcType=INTEGER},
       </if>
       <if test="record.updateDate != null" >
         update_date = #{record.updateDate,jdbcType=VARCHAR},
@@ -255,11 +275,13 @@
       order_number = #{record.orderNumber,jdbcType=VARCHAR},
       commodity_id = #{record.commodityId,jdbcType=INTEGER},
       number = #{record.number,jdbcType=VARCHAR},
-      total = #{record.total,jdbcType=VARCHAR},
-      unit_price = #{record.unitPrice,jdbcType=VARCHAR},
+      total = #{record.total,jdbcType=DOUBLE},
+      unit_price = #{record.unitPrice,jdbcType=DOUBLE},
       payment_method = #{record.paymentMethod,jdbcType=INTEGER},
       purchase_date = #{record.purchaseDate,jdbcType=VARCHAR},
       order_type = #{record.orderType,jdbcType=INTEGER},
+      freight_type = #{record.freightType,jdbcType=INTEGER},
+      payment_info = #{record.paymentInfo,jdbcType=INTEGER},
       update_date = #{record.updateDate,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -282,10 +304,10 @@
         number = #{number,jdbcType=VARCHAR},
       </if>
       <if test="total != null" >
-        total = #{total,jdbcType=VARCHAR},
+        total = #{total,jdbcType=DOUBLE},
       </if>
       <if test="unitPrice != null" >
-        unit_price = #{unitPrice,jdbcType=VARCHAR},
+        unit_price = #{unitPrice,jdbcType=DOUBLE},
       </if>
       <if test="paymentMethod != null" >
         payment_method = #{paymentMethod,jdbcType=INTEGER},
@@ -295,6 +317,12 @@
       </if>
       <if test="orderType != null" >
         order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="freightType != null" >
+        freight_type = #{freightType,jdbcType=INTEGER},
+      </if>
+      <if test="paymentInfo != null" >
+        payment_info = #{paymentInfo,jdbcType=INTEGER},
       </if>
       <if test="updateDate != null" >
         update_date = #{updateDate,jdbcType=VARCHAR},
@@ -311,11 +339,13 @@
       order_number = #{orderNumber,jdbcType=VARCHAR},
       commodity_id = #{commodityId,jdbcType=INTEGER},
       number = #{number,jdbcType=VARCHAR},
-      total = #{total,jdbcType=VARCHAR},
-      unit_price = #{unitPrice,jdbcType=VARCHAR},
+      total = #{total,jdbcType=DOUBLE},
+      unit_price = #{unitPrice,jdbcType=DOUBLE},
       payment_method = #{paymentMethod,jdbcType=INTEGER},
       purchase_date = #{purchaseDate,jdbcType=VARCHAR},
       order_type = #{orderType,jdbcType=INTEGER},
+      freight_type = #{freightType,jdbcType=INTEGER},
+      payment_info = #{paymentInfo,jdbcType=INTEGER},
       update_date = #{updateDate,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=VARCHAR}
     where order_id = #{orderId,jdbcType=INTEGER}

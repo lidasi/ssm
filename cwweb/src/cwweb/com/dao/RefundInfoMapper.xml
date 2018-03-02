@@ -6,7 +6,7 @@
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="order_number" property="orderNumber" jdbcType="INTEGER" />
     <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
-    <result column="refund_price" property="refundPrice" jdbcType="VARCHAR" />
+    <result column="refund_price" property="refundPrice" jdbcType="DOUBLE" />
     <result column="refund_date" property="refundDate" jdbcType="VARCHAR" />
     <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="VARCHAR" />
@@ -108,7 +108,7 @@
       commodity_id, refund_price, refund_date, 
       update_date, create_date)
     values (#{refundId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderNumber,jdbcType=INTEGER}, 
-      #{commodityId,jdbcType=INTEGER}, #{refundPrice,jdbcType=VARCHAR}, #{refundDate,jdbcType=VARCHAR}, 
+      #{commodityId,jdbcType=INTEGER}, #{refundPrice,jdbcType=DOUBLE}, #{refundDate,jdbcType=VARCHAR}, 
       #{updateDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cwweb.com.model.RefundInfo" >
@@ -153,7 +153,7 @@
         #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="refundPrice != null" >
-        #{refundPrice,jdbcType=VARCHAR},
+        #{refundPrice,jdbcType=DOUBLE},
       </if>
       <if test="refundDate != null" >
         #{refundDate,jdbcType=VARCHAR},
@@ -188,7 +188,7 @@
         commodity_id = #{record.commodityId,jdbcType=INTEGER},
       </if>
       <if test="record.refundPrice != null" >
-        refund_price = #{record.refundPrice,jdbcType=VARCHAR},
+        refund_price = #{record.refundPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.refundDate != null" >
         refund_date = #{record.refundDate,jdbcType=VARCHAR},
@@ -210,7 +210,7 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       order_number = #{record.orderNumber,jdbcType=INTEGER},
       commodity_id = #{record.commodityId,jdbcType=INTEGER},
-      refund_price = #{record.refundPrice,jdbcType=VARCHAR},
+      refund_price = #{record.refundPrice,jdbcType=DOUBLE},
       refund_date = #{record.refundDate,jdbcType=VARCHAR},
       update_date = #{record.updateDate,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=VARCHAR}
@@ -231,7 +231,7 @@
         commodity_id = #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="refundPrice != null" >
-        refund_price = #{refundPrice,jdbcType=VARCHAR},
+        refund_price = #{refundPrice,jdbcType=DOUBLE},
       </if>
       <if test="refundDate != null" >
         refund_date = #{refundDate,jdbcType=VARCHAR},
@@ -250,7 +250,7 @@
     set user_id = #{userId,jdbcType=INTEGER},
       order_number = #{orderNumber,jdbcType=INTEGER},
       commodity_id = #{commodityId,jdbcType=INTEGER},
-      refund_price = #{refundPrice,jdbcType=VARCHAR},
+      refund_price = #{refundPrice,jdbcType=DOUBLE},
       refund_date = #{refundDate,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=VARCHAR}

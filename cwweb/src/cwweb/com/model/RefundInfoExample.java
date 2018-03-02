@@ -354,62 +354,52 @@ public class RefundInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceEqualTo(String value) {
+        public Criteria andRefundPriceEqualTo(Double value) {
             addCriterion("refund_price =", value, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceNotEqualTo(String value) {
+        public Criteria andRefundPriceNotEqualTo(Double value) {
             addCriterion("refund_price <>", value, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceGreaterThan(String value) {
+        public Criteria andRefundPriceGreaterThan(Double value) {
             addCriterion("refund_price >", value, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceGreaterThanOrEqualTo(String value) {
+        public Criteria andRefundPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("refund_price >=", value, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceLessThan(String value) {
+        public Criteria andRefundPriceLessThan(Double value) {
             addCriterion("refund_price <", value, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceLessThanOrEqualTo(String value) {
+        public Criteria andRefundPriceLessThanOrEqualTo(Double value) {
             addCriterion("refund_price <=", value, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceLike(String value) {
-            addCriterion("refund_price like", value, "refundPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andRefundPriceNotLike(String value) {
-            addCriterion("refund_price not like", value, "refundPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andRefundPriceIn(List<String> values) {
+        public Criteria andRefundPriceIn(List<Double> values) {
             addCriterion("refund_price in", values, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceNotIn(List<String> values) {
+        public Criteria andRefundPriceNotIn(List<Double> values) {
             addCriterion("refund_price not in", values, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceBetween(String value1, String value2) {
+        public Criteria andRefundPriceBetween(Double value1, Double value2) {
             addCriterion("refund_price between", value1, value2, "refundPrice");
             return (Criteria) this;
         }
 
-        public Criteria andRefundPriceNotBetween(String value1, String value2) {
+        public Criteria andRefundPriceNotBetween(Double value1, Double value2) {
             addCriterion("refund_price not between", value1, value2, "refundPrice");
             return (Criteria) this;
         }

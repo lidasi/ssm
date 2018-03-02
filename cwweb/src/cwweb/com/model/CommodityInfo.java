@@ -7,7 +7,7 @@ public class CommodityInfo {
 
     private String commodityBar;
 
-    private String commodityMarket;
+    private Double commodityMarket;
 
     private Integer shelvesState;
 
@@ -47,12 +47,12 @@ public class CommodityInfo {
         this.commodityBar = commodityBar == null ? null : commodityBar.trim();
     }
 
-    public String getCommodityMarket() {
+    public Double getCommodityMarket() {
         return commodityMarket;
     }
 
-    public void setCommodityMarket(String commodityMarket) {
-        this.commodityMarket = commodityMarket == null ? null : commodityMarket.trim();
+    public void setCommodityMarket(Double commodityMarket) {
+        this.commodityMarket = commodityMarket;
     }
 
     public Integer getShelvesState() {

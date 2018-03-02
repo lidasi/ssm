@@ -164,6 +164,66 @@ public class OutInventoryExample {
             return (Criteria) this;
         }
 
+        public Criteria andTotalIdIsNull() {
+            addCriterion("total_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdIsNotNull() {
+            addCriterion("total_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdEqualTo(Integer value) {
+            addCriterion("total_id =", value, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdNotEqualTo(Integer value) {
+            addCriterion("total_id <>", value, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdGreaterThan(Integer value) {
+            addCriterion("total_id >", value, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_id >=", value, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdLessThan(Integer value) {
+            addCriterion("total_id <", value, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdLessThanOrEqualTo(Integer value) {
+            addCriterion("total_id <=", value, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdIn(List<Integer> values) {
+            addCriterion("total_id in", values, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdNotIn(List<Integer> values) {
+            addCriterion("total_id not in", values, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdBetween(Integer value1, Integer value2) {
+            addCriterion("total_id between", value1, value2, "totalId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_id not between", value1, value2, "totalId");
+            return (Criteria) this;
+        }
+
         public Criteria andUuidIsNull() {
             addCriterion("uuid is null");
             return (Criteria) this;
@@ -231,66 +291,6 @@ public class OutInventoryExample {
 
         public Criteria andUuidNotBetween(String value1, String value2) {
             addCriterion("uuid not between", value1, value2, "uuid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdIsNull() {
-            addCriterion("commodity_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdIsNotNull() {
-            addCriterion("commodity_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdEqualTo(Integer value) {
-            addCriterion("commodity_id =", value, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdNotEqualTo(Integer value) {
-            addCriterion("commodity_id <>", value, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdGreaterThan(Integer value) {
-            addCriterion("commodity_id >", value, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("commodity_id >=", value, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdLessThan(Integer value) {
-            addCriterion("commodity_id <", value, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdLessThanOrEqualTo(Integer value) {
-            addCriterion("commodity_id <=", value, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdIn(List<Integer> values) {
-            addCriterion("commodity_id in", values, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdNotIn(List<Integer> values) {
-            addCriterion("commodity_id not in", values, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdBetween(Integer value1, Integer value2) {
-            addCriterion("commodity_id between", value1, value2, "commodityId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("commodity_id not between", value1, value2, "commodityId");
             return (Criteria) this;
         }
 

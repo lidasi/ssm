@@ -7,7 +7,7 @@
     <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
     <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
     <result column="transaction_type" property="transactionType" jdbcType="INTEGER" />
-    <result column="transaction_money" property="transactionMoney" jdbcType="VARCHAR" />
+    <result column="transaction_money" property="transactionMoney" jdbcType="DOUBLE" />
     <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="VARCHAR" />
   </resultMap>
@@ -108,7 +108,7 @@
       commodity_id, transaction_type, transaction_money, 
       update_date, create_date)
     values (#{resumeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderNumber,jdbcType=VARCHAR}, 
-      #{commodityId,jdbcType=INTEGER}, #{transactionType,jdbcType=INTEGER}, #{transactionMoney,jdbcType=VARCHAR}, 
+      #{commodityId,jdbcType=INTEGER}, #{transactionType,jdbcType=INTEGER}, #{transactionMoney,jdbcType=DOUBLE}, 
       #{updateDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cwweb.com.model.ResumeInfo" >
@@ -156,7 +156,7 @@
         #{transactionType,jdbcType=INTEGER},
       </if>
       <if test="transactionMoney != null" >
-        #{transactionMoney,jdbcType=VARCHAR},
+        #{transactionMoney,jdbcType=DOUBLE},
       </if>
       <if test="updateDate != null" >
         #{updateDate,jdbcType=VARCHAR},
@@ -191,7 +191,7 @@
         transaction_type = #{record.transactionType,jdbcType=INTEGER},
       </if>
       <if test="record.transactionMoney != null" >
-        transaction_money = #{record.transactionMoney,jdbcType=VARCHAR},
+        transaction_money = #{record.transactionMoney,jdbcType=DOUBLE},
       </if>
       <if test="record.updateDate != null" >
         update_date = #{record.updateDate,jdbcType=VARCHAR},
@@ -211,7 +211,7 @@
       order_number = #{record.orderNumber,jdbcType=VARCHAR},
       commodity_id = #{record.commodityId,jdbcType=INTEGER},
       transaction_type = #{record.transactionType,jdbcType=INTEGER},
-      transaction_money = #{record.transactionMoney,jdbcType=VARCHAR},
+      transaction_money = #{record.transactionMoney,jdbcType=DOUBLE},
       update_date = #{record.updateDate,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -234,7 +234,7 @@
         transaction_type = #{transactionType,jdbcType=INTEGER},
       </if>
       <if test="transactionMoney != null" >
-        transaction_money = #{transactionMoney,jdbcType=VARCHAR},
+        transaction_money = #{transactionMoney,jdbcType=DOUBLE},
       </if>
       <if test="updateDate != null" >
         update_date = #{updateDate,jdbcType=VARCHAR},
@@ -251,7 +251,7 @@
       order_number = #{orderNumber,jdbcType=VARCHAR},
       commodity_id = #{commodityId,jdbcType=INTEGER},
       transaction_type = #{transactionType,jdbcType=INTEGER},
-      transaction_money = #{transactionMoney,jdbcType=VARCHAR},
+      transaction_money = #{transactionMoney,jdbcType=DOUBLE},
       update_date = #{updateDate,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=VARCHAR}
     where resume_id = #{resumeId,jdbcType=INTEGER}

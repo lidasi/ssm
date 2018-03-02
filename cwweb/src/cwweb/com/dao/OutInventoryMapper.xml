@@ -3,8 +3,8 @@
 <mapper namespace="cwweb.com.dao.OutInventoryMapper" >
   <resultMap id="BaseResultMap" type="cwweb.com.model.OutInventory" >
     <id column="outin_id" property="outinId" jdbcType="INTEGER" />
+    <result column="total_id" property="totalId" jdbcType="INTEGER" />
     <result column="uuid" property="uuid" jdbcType="VARCHAR" />
-    <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
     <result column="out_number" property="outNumber" jdbcType="INTEGER" />
     <result column="commdity_unit" property="commdityUnit" jdbcType="INTEGER" />
     <result column="out_type" property="outType" jdbcType="INTEGER" />
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    outin_id, uuid, commodity_id, out_number, commdity_unit, out_type, brokerage, out_date, 
+    outin_id, total_id, uuid, out_number, commdity_unit, out_type, brokerage, out_date, 
     create_date, update_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cwweb.com.model.OutInventoryExample" >
@@ -106,11 +106,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cwweb.com.model.OutInventory" >
-    insert into out_inventory (outin_id, uuid, commodity_id, 
+    insert into out_inventory (outin_id, total_id, uuid, 
       out_number, commdity_unit, out_type, 
       brokerage, out_date, create_date, 
       update_date)
-    values (#{outinId,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{commodityId,jdbcType=INTEGER}, 
+    values (#{outinId,jdbcType=INTEGER}, #{totalId,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, 
       #{outNumber,jdbcType=INTEGER}, #{commdityUnit,jdbcType=INTEGER}, #{outType,jdbcType=INTEGER}, 
       #{brokerage,jdbcType=VARCHAR}, #{outDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, 
       #{updateDate,jdbcType=VARCHAR})
@@ -121,11 +121,11 @@
       <if test="outinId != null" >
         outin_id,
       </if>
+      <if test="totalId != null" >
+        total_id,
+      </if>
       <if test="uuid != null" >
         uuid,
-      </if>
-      <if test="commodityId != null" >
-        commodity_id,
       </if>
       <if test="outNumber != null" >
         out_number,
@@ -153,11 +153,11 @@
       <if test="outinId != null" >
         #{outinId,jdbcType=INTEGER},
       </if>
+      <if test="totalId != null" >
+        #{totalId,jdbcType=INTEGER},
+      </if>
       <if test="uuid != null" >
         #{uuid,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityId != null" >
-        #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="outNumber != null" >
         #{outNumber,jdbcType=INTEGER},
@@ -194,11 +194,11 @@
       <if test="record.outinId != null" >
         outin_id = #{record.outinId,jdbcType=INTEGER},
       </if>
+      <if test="record.totalId != null" >
+        total_id = #{record.totalId,jdbcType=INTEGER},
+      </if>
       <if test="record.uuid != null" >
         uuid = #{record.uuid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.commodityId != null" >
-        commodity_id = #{record.commodityId,jdbcType=INTEGER},
       </if>
       <if test="record.outNumber != null" >
         out_number = #{record.outNumber,jdbcType=INTEGER},
@@ -229,8 +229,8 @@
   <update id="updateByExample" parameterType="map" >
     update out_inventory
     set outin_id = #{record.outinId,jdbcType=INTEGER},
+      total_id = #{record.totalId,jdbcType=INTEGER},
       uuid = #{record.uuid,jdbcType=VARCHAR},
-      commodity_id = #{record.commodityId,jdbcType=INTEGER},
       out_number = #{record.outNumber,jdbcType=INTEGER},
       commdity_unit = #{record.commdityUnit,jdbcType=INTEGER},
       out_type = #{record.outType,jdbcType=INTEGER},
@@ -245,11 +245,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="cwweb.com.model.OutInventory" >
     update out_inventory
     <set >
+      <if test="totalId != null" >
+        total_id = #{totalId,jdbcType=INTEGER},
+      </if>
       <if test="uuid != null" >
         uuid = #{uuid,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityId != null" >
-        commodity_id = #{commodityId,jdbcType=INTEGER},
       </if>
       <if test="outNumber != null" >
         out_number = #{outNumber,jdbcType=INTEGER},
@@ -277,8 +277,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cwweb.com.model.OutInventory" >
     update out_inventory
-    set uuid = #{uuid,jdbcType=VARCHAR},
-      commodity_id = #{commodityId,jdbcType=INTEGER},
+    set total_id = #{totalId,jdbcType=INTEGER},
+      uuid = #{uuid,jdbcType=VARCHAR},
       out_number = #{outNumber,jdbcType=INTEGER},
       commdity_unit = #{commdityUnit,jdbcType=INTEGER},
       out_type = #{outType,jdbcType=INTEGER},

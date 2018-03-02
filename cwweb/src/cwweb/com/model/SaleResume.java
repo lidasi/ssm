@@ -5,11 +5,11 @@ public class SaleResume {
 
     private Integer commodityId;
 
-    private String salePrice;
+    private Double salePrice;
 
     private Integer saleNumber;
 
-    private String saleTotal;
+    private Double saleTotal;
 
     private String brokerage;
 
@@ -39,12 +39,12 @@ public class SaleResume {
         this.commodityId = commodityId;
     }
 
-    public String getSalePrice() {
+    public Double getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(String salePrice) {
-        this.salePrice = salePrice == null ? null : salePrice.trim();
+    public void setSalePrice(Double salePrice) {
+        this.salePrice = salePrice;
     }
 
     public Integer getSaleNumber() {
@@ -55,12 +55,12 @@ public class SaleResume {
         this.saleNumber = saleNumber;
     }
 
-    public String getSaleTotal() {
+    public Double getSaleTotal() {
         return saleTotal;
     }
 
-    public void setSaleTotal(String saleTotal) {
-        this.saleTotal = saleTotal == null ? null : saleTotal.trim();
+    public void setSaleTotal(Double saleTotal) {
+        this.saleTotal = saleTotal;
     }
 
     public String getBrokerage() {

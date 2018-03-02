@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.TotalInventory;
 import cwweb.com.model.TotalInventoryExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TotalInventoryMapper {
     int countByExample(TotalInventoryExample example);
@@ -21,8 +19,6 @@ public interface TotalInventoryMapper {
     List<TotalInventory> selectByExample(TotalInventoryExample example);
 
     TotalInventory selectByPrimaryKey(Integer totalinId);
-    
-    List<TotalInventory> selectTotalInventory(TotalInventoryExample example);
 
     int updateByExampleSelective(@Param("record") TotalInventory record, @Param("example") TotalInventoryExample example);
 

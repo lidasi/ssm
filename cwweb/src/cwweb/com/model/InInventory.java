@@ -3,13 +3,13 @@ package cwweb.com.model;
 public class InInventory {
     private Integer addressId;
 
+    private Integer totalId;
+
     private String uuid;
 
-    private Integer commdityId;
+    private Double unitPrice;
 
-    private String unitPrice;
-
-    private String commdityTotal;
+    private Double commdityTotal;
 
     private Integer inNumber;
 
@@ -25,7 +25,9 @@ public class InInventory {
 
     private String updateDate;
     
-    private CommodityInfo commodityInfo;
+    TotalInventory totalInventory;
+    
+    CommodityInfo commodityInfo;
 
     public Integer getAddressId() {
         return addressId;
@@ -33,6 +35,14 @@ public class InInventory {
 
     public void setAddressId(Integer addressId) {
         this.addressId = addressId;
+    }
+
+    public Integer getTotalId() {
+        return totalId;
+    }
+
+    public void setTotalId(Integer totalId) {
+        this.totalId = totalId;
     }
 
     public String getUuid() {
@@ -43,28 +53,20 @@ public class InInventory {
         this.uuid = uuid == null ? null : uuid.trim();
     }
 
-    public Integer getCommdityId() {
-        return commdityId;
-    }
-
-    public void setCommdityId(Integer commdityId) {
-        this.commdityId = commdityId;
-    }
-
-    public String getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(String unitPrice) {
-        this.unitPrice = unitPrice == null ? null : unitPrice.trim();
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    public String getCommdityTotal() {
+    public Double getCommdityTotal() {
         return commdityTotal;
     }
 
-    public void setCommdityTotal(String commdityTotal) {
-        this.commdityTotal = commdityTotal == null ? null : commdityTotal.trim();
+    public void setCommdityTotal(Double commdityTotal) {
+        this.commdityTotal = commdityTotal;
     }
 
     public Integer getInNumber() {
@@ -123,22 +125,30 @@ public class InInventory {
         this.updateDate = updateDate == null ? null : updateDate.trim();
     }
 
-	public CommodityInfo getCommodityInfo() {
-		return commodityInfo;
-	}
+    public TotalInventory getTotalInventory() {
+        return totalInventory;
+    }
 
-	public void setCommodityInfo(CommodityInfo commodityInfo) {
-		this.commodityInfo = commodityInfo;
-	}
+    public void setTotalInventory(TotalInventory totalInventory) {
+        this.totalInventory = totalInventory;
+    }
 
-	@Override
-	public String toString() {
-		return "InInventory [addressId=" + addressId + ", uuid=" + uuid + ", commdityId=" + commdityId + ", unitPrice="
-				+ unitPrice + ", commdityTotal=" + commdityTotal + ", inNumber=" + inNumber + ", commdityUnit="
-				+ commdityUnit + ", inType=" + inType + ", brokerage=" + brokerage + ", inDate=" + inDate
-				+ ", createDate=" + createDate + ", updateDate=" + updateDate + ", commodityInfo=" + commodityInfo
-				+ "]";
-	}
+    public CommodityInfo getCommodityInfo() {
+        return commodityInfo;
+    }
+
+    public void setCommodityInfo(CommodityInfo commodityInfo) {
+        this.commodityInfo = commodityInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "InInventory [addressId=" + addressId + ", totalId=" + totalId + ", uuid=" + uuid + ", unitPrice="
+                + unitPrice + ", commdityTotal=" + commdityTotal + ", inNumber=" + inNumber + ", commdityUnit="
+                + commdityUnit + ", inType=" + inType + ", brokerage=" + brokerage + ", inDate=" + inDate
+                + ", createDate=" + createDate + ", updateDate=" + updateDate + ", totalInventory=" + totalInventory
+                + ", commodityInfo=" + commodityInfo + "]";
+    }
     
     
 }

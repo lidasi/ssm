@@ -11,7 +11,7 @@ public class ResumeInfo {
 
     private Integer transactionType;
 
-    private String transactionMoney;
+    private Double transactionMoney;
 
     private String updateDate;
 
@@ -57,12 +57,12 @@ public class ResumeInfo {
         this.transactionType = transactionType;
     }
 
-    public String getTransactionMoney() {
+    public Double getTransactionMoney() {
         return transactionMoney;
     }
 
-    public void setTransactionMoney(String transactionMoney) {
-        this.transactionMoney = transactionMoney == null ? null : transactionMoney.trim();
+    public void setTransactionMoney(Double transactionMoney) {
+        this.transactionMoney = transactionMoney;
     }
 
     public String getUpdateDate() {

@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.ResumeInventory;
 import cwweb.com.model.ResumeInventoryExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ResumeInventoryMapper {
     int countByExample(ResumeInventoryExample example);

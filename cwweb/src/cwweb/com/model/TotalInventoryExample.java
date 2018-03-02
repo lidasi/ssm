@@ -3,8 +3,6 @@ package cwweb.com.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import cwweb.com.model.InInventoryExample.Criteria;
-
 public class TotalInventoryExample {
     protected String orderByClause;
 
@@ -306,62 +304,52 @@ public class TotalInventoryExample {
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberEqualTo(String value) {
+        public Criteria andTotalNumberEqualTo(Integer value) {
             addCriterion("total_number =", value, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberNotEqualTo(String value) {
+        public Criteria andTotalNumberNotEqualTo(Integer value) {
             addCriterion("total_number <>", value, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberGreaterThan(String value) {
+        public Criteria andTotalNumberGreaterThan(Integer value) {
             addCriterion("total_number >", value, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberGreaterThanOrEqualTo(String value) {
+        public Criteria andTotalNumberGreaterThanOrEqualTo(Integer value) {
             addCriterion("total_number >=", value, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberLessThan(String value) {
+        public Criteria andTotalNumberLessThan(Integer value) {
             addCriterion("total_number <", value, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberLessThanOrEqualTo(String value) {
+        public Criteria andTotalNumberLessThanOrEqualTo(Integer value) {
             addCriterion("total_number <=", value, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberLike(String value) {
-            addCriterion("total_number like", value, "totalNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalNumberNotLike(String value) {
-            addCriterion("total_number not like", value, "totalNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalNumberIn(List<String> values) {
+        public Criteria andTotalNumberIn(List<Integer> values) {
             addCriterion("total_number in", values, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberNotIn(List<String> values) {
+        public Criteria andTotalNumberNotIn(List<Integer> values) {
             addCriterion("total_number not in", values, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberBetween(String value1, String value2) {
+        public Criteria andTotalNumberBetween(Integer value1, Integer value2) {
             addCriterion("total_number between", value1, value2, "totalNumber");
             return (Criteria) this;
         }
 
-        public Criteria andTotalNumberNotBetween(String value1, String value2) {
+        public Criteria andTotalNumberNotBetween(Integer value1, Integer value2) {
             addCriterion("total_number not between", value1, value2, "totalNumber");
             return (Criteria) this;
         }
@@ -563,392 +551,6 @@ public class TotalInventoryExample {
 
         public Criteria andUpdateDateNotBetween(String value1, String value2) {
             addCriterion("update_date not between", value1, value2, "updateDate");
-            return (Criteria) this;
-        }
-        
-      //this is a commdity info name
-        public Criteria andCommodityNameIsNull() {
-            addCriterion("commodity_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameIsNotNull() {
-            addCriterion("commodity_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameEqualTo(String value) {
-            addCriterion("commodity_name =", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameNotEqualTo(String value) {
-            addCriterion("commodity_name <>", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameGreaterThan(String value) {
-            addCriterion("commodity_name >", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameGreaterThanOrEqualTo(String value) {
-            addCriterion("commodity_name >=", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameLessThan(String value) {
-            addCriterion("commodity_name <", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameLessThanOrEqualTo(String value) {
-            addCriterion("commodity_name <=", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameLike(String value) {
-            addCriterion("commodity_name like", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameNotLike(String value) {
-            addCriterion("commodity_name not like", value, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameIn(List<String> values) {
-            addCriterion("commodity_name in", values, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameNotIn(List<String> values) {
-            addCriterion("commodity_name not in", values, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameBetween(String value1, String value2) {
-            addCriterion("commodity_name between", value1, value2, "commodityName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityNameNotBetween(String value1, String value2) {
-            addCriterion("commodity_name not between", value1, value2, "commodityName");
-            return (Criteria) this;
-        }
-        
-        //this is a commdity info bar
-        public Criteria andCommodityBarIsNull() {
-            addCriterion("commodity_bar is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarIsNotNull() {
-            addCriterion("commodity_bar is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarEqualTo(String value) {
-            addCriterion("commodity_bar =", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarNotEqualTo(String value) {
-            addCriterion("commodity_bar <>", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarGreaterThan(String value) {
-            addCriterion("commodity_bar >", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarGreaterThanOrEqualTo(String value) {
-            addCriterion("commodity_bar >=", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarLessThan(String value) {
-            addCriterion("commodity_bar <", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarLessThanOrEqualTo(String value) {
-            addCriterion("commodity_bar <=", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarLike(String value) {
-            addCriterion("commodity_bar like", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarNotLike(String value) {
-            addCriterion("commodity_bar not like", value, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarIn(List<String> values) {
-            addCriterion("commodity_bar in", values, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarNotIn(List<String> values) {
-            addCriterion("commodity_bar not in", values, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarBetween(String value1, String value2) {
-            addCriterion("commodity_bar between", value1, value2, "commodityBar");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityBarNotBetween(String value1, String value2) {
-            addCriterion("commodity_bar not between", value1, value2, "commodityBar");
-            return (Criteria) this;
-        }
-        
-        //this is a commdity info type
-        public Criteria andTypeIsNull() {
-            addCriterion("type is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeIsNotNull() {
-            addCriterion("type is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeEqualTo(Integer value) {
-            addCriterion("type =", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeNotEqualTo(Integer value) {
-            addCriterion("type <>", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeGreaterThan(Integer value) {
-            addCriterion("type >", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("type >=", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeLessThan(Integer value) {
-            addCriterion("type <", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("type <=", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeIn(List<Integer> values) {
-            addCriterion("type in", values, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeNotIn(List<Integer> values) {
-            addCriterion("type not in", values, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeBetween(Integer value1, Integer value2) {
-            addCriterion("type between", value1, value2, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("type not between", value1, value2, "type");
-            return (Criteria) this;
-        }
-        
-        //this is a commdity info size
-        public Criteria andSizeIsNull() {
-            addCriterion("size is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeIsNotNull() {
-            addCriterion("size is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeEqualTo(Integer value) {
-            addCriterion("size =", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeNotEqualTo(Integer value) {
-            addCriterion("size <>", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeGreaterThan(Integer value) {
-            addCriterion("size >", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("size >=", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeLessThan(Integer value) {
-            addCriterion("size <", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeLessThanOrEqualTo(Integer value) {
-            addCriterion("size <=", value, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeIn(List<Integer> values) {
-            addCriterion("size in", values, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeNotIn(List<Integer> values) {
-            addCriterion("size not in", values, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeBetween(Integer value1, Integer value2) {
-            addCriterion("size between", value1, value2, "size");
-            return (Criteria) this;
-        }
-
-        public Criteria andSizeNotBetween(Integer value1, Integer value2) {
-            addCriterion("size not between", value1, value2, "size");
-            return (Criteria) this;
-        }
-        
-        //this is a commdity info color
-        public Criteria andColorIsNull() {
-            addCriterion("color is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorIsNotNull() {
-            addCriterion("color is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorEqualTo(Integer value) {
-            addCriterion("color =", value, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorNotEqualTo(Integer value) {
-            addCriterion("color <>", value, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorGreaterThan(Integer value) {
-            addCriterion("color >", value, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorGreaterThanOrEqualTo(Integer value) {
-            addCriterion("color >=", value, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorLessThan(Integer value) {
-            addCriterion("color <", value, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorLessThanOrEqualTo(Integer value) {
-            addCriterion("color <=", value, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorIn(List<Integer> values) {
-            addCriterion("color in", values, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorNotIn(List<Integer> values) {
-            addCriterion("color not in", values, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorBetween(Integer value1, Integer value2) {
-            addCriterion("color between", value1, value2, "color");
-            return (Criteria) this;
-        }
-
-        public Criteria andColorNotBetween(Integer value1, Integer value2) {
-            addCriterion("color not between", value1, value2, "color");
-            return (Criteria) this;
-        }
-        
-        //this is a commdity info style
-        public Criteria andStyleIsNull() {
-            addCriterion("style is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleIsNotNull() {
-            addCriterion("style is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleEqualTo(Integer value) {
-            addCriterion("style =", value, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleNotEqualTo(Integer value) {
-            addCriterion("style <>", value, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleGreaterThan(Integer value) {
-            addCriterion("style >", value, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleGreaterThanOrEqualTo(Integer value) {
-            addCriterion("style >=", value, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleLessThan(Integer value) {
-            addCriterion("style <", value, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleLessThanOrEqualTo(Integer value) {
-            addCriterion("style <=", value, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleIn(List<Integer> values) {
-            addCriterion("style in", values, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleNotIn(List<Integer> values) {
-            addCriterion("style not in", values, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleBetween(Integer value1, Integer value2) {
-            addCriterion("style between", value1, value2, "style");
-            return (Criteria) this;
-        }
-
-        public Criteria andStyleNotBetween(Integer value1, Integer value2) {
-            addCriterion("style not between", value1, value2, "style");
             return (Criteria) this;
         }
     }

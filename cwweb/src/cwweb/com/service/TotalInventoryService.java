@@ -7,4 +7,9 @@ import cwweb.com.model.TotalInventoryExample;
 
 public interface TotalInventoryService {
     List<TotalInventory> selectTotal(TotalInventoryExample totalInventoryExample);
+
+    TotalInventory getCommodityTotal(Integer commodityId);
+
+    void update(TotalInventory totalInventory);
+
 }

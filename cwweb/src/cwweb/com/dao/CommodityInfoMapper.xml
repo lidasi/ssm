@@ -5,7 +5,7 @@
     <id column="commodity_id" property="commodityId" jdbcType="INTEGER" />
     <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
     <result column="commodity_bar" property="commodityBar" jdbcType="VARCHAR" />
-    <result column="commodity_market" property="commodityMarket" jdbcType="VARCHAR" />
+    <result column="commodity_market" property="commodityMarket" jdbcType="DOUBLE" />
     <result column="shelves_state" property="shelvesState" jdbcType="INTEGER" />
     <result column="style" property="style" jdbcType="INTEGER" />
     <result column="color" property="color" jdbcType="INTEGER" />
@@ -112,7 +112,7 @@
       color, size, type, 
       update_date, create_date)
     values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityBar,jdbcType=VARCHAR}, 
-      #{commodityMarket,jdbcType=VARCHAR}, #{shelvesState,jdbcType=INTEGER}, #{style,jdbcType=INTEGER}, 
+      #{commodityMarket,jdbcType=DOUBLE}, #{shelvesState,jdbcType=INTEGER}, #{style,jdbcType=INTEGER}, 
       #{color,jdbcType=INTEGER}, #{size,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
       #{updateDate,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR})
   </insert>
@@ -164,7 +164,7 @@
         #{commodityBar,jdbcType=VARCHAR},
       </if>
       <if test="commodityMarket != null" >
-        #{commodityMarket,jdbcType=VARCHAR},
+        #{commodityMarket,jdbcType=DOUBLE},
       </if>
       <if test="shelvesState != null" >
         #{shelvesState,jdbcType=INTEGER},
@@ -208,7 +208,7 @@
         commodity_bar = #{record.commodityBar,jdbcType=VARCHAR},
       </if>
       <if test="record.commodityMarket != null" >
-        commodity_market = #{record.commodityMarket,jdbcType=VARCHAR},
+        commodity_market = #{record.commodityMarket,jdbcType=DOUBLE},
       </if>
       <if test="record.shelvesState != null" >
         shelves_state = #{record.shelvesState,jdbcType=INTEGER},
@@ -241,7 +241,7 @@
     set commodity_id = #{record.commodityId,jdbcType=INTEGER},
       commodity_name = #{record.commodityName,jdbcType=VARCHAR},
       commodity_bar = #{record.commodityBar,jdbcType=VARCHAR},
-      commodity_market = #{record.commodityMarket,jdbcType=VARCHAR},
+      commodity_market = #{record.commodityMarket,jdbcType=DOUBLE},
       shelves_state = #{record.shelvesState,jdbcType=INTEGER},
       style = #{record.style,jdbcType=INTEGER},
       color = #{record.color,jdbcType=INTEGER},
@@ -263,7 +263,7 @@
         commodity_bar = #{commodityBar,jdbcType=VARCHAR},
       </if>
       <if test="commodityMarket != null" >
-        commodity_market = #{commodityMarket,jdbcType=VARCHAR},
+        commodity_market = #{commodityMarket,jdbcType=DOUBLE},
       </if>
       <if test="shelvesState != null" >
         shelves_state = #{shelvesState,jdbcType=INTEGER},
@@ -293,7 +293,7 @@
     update commodity_info
     set commodity_name = #{commodityName,jdbcType=VARCHAR},
       commodity_bar = #{commodityBar,jdbcType=VARCHAR},
-      commodity_market = #{commodityMarket,jdbcType=VARCHAR},
+      commodity_market = #{commodityMarket,jdbcType=DOUBLE},
       shelves_state = #{shelvesState,jdbcType=INTEGER},
       style = #{style,jdbcType=INTEGER},
       color = #{color,jdbcType=INTEGER},

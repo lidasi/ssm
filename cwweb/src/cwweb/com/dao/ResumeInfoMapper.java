@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.ResumeInfo;
 import cwweb.com.model.ResumeInfoExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ResumeInfoMapper {
     int countByExample(ResumeInfoExample example);

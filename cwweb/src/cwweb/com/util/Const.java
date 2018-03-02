@@ -51,4 +51,6 @@ public interface Const {
     /**返回失败代码 cod **/
     String RES_FAIL = "400";
     
+    String RES_ERROR = "401";
+    
 }

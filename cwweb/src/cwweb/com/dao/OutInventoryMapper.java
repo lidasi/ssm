@@ -1,11 +1,9 @@
 package cwweb.com.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import cwweb.com.model.OutInventory;
 import cwweb.com.model.OutInventoryExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface OutInventoryMapper {
     int countByExample(OutInventoryExample example);
