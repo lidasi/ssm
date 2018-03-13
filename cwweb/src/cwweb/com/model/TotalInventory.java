@@ -70,4 +70,13 @@ public class TotalInventory {
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate == null ? null : updateDate.trim();
     }
+
+    @Override
+    public String toString() {
+        return "TotalInventory [totalinId=" + totalinId + ", uuid=" + uuid + ", commodityId=" + commodityId
+                + ", totalNumber=" + totalNumber + ", commdityUnit=" + commdityUnit + ", createDate=" + createDate
+                + ", updateDate=" + updateDate + "]";
+    }
+    
+    
 }

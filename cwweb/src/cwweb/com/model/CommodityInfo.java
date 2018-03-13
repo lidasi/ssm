@@ -23,6 +23,31 @@ public class CommodityInfo {
 
     private String createDate;
 
+    public CommodityInfo() {
+        
+    }
+    
+    
+    
+    public CommodityInfo(Integer commodityId, String commodityName, String commodityBar, Double commodityMarket,
+            Integer shelvesState, Integer style, Integer color, Integer size, Integer type, String updateDate,
+            String createDate) {
+        super();
+        this.commodityId = commodityId;
+        this.commodityName = commodityName;
+        this.commodityBar = commodityBar;
+        this.commodityMarket = commodityMarket;
+        this.shelvesState = shelvesState;
+        this.style = style;
+        this.color = color;
+        this.size = size;
+        this.type = type;
+        this.updateDate = updateDate;
+        this.createDate = createDate;
+    }
+
+
+
     public Integer getCommodityId() {
         return commodityId;
     }
@@ -110,4 +135,13 @@ public class CommodityInfo {
     public void setCreateDate(String createDate) {
         this.createDate = createDate == null ? null : createDate.trim();
     }
+
+    @Override
+    public String toString() {
+        return "CommodityInfo [commodityId=" + commodityId + ", commodityName=" + commodityName + ", commodityBar="
+                + commodityBar + ", commodityMarket=" + commodityMarket + ", shelvesState=" + shelvesState + ", style="
+                + style + ", color=" + color + ", size=" + size + ", type=" + type + ", updateDate=" + updateDate
+                + ", createDate=" + createDate + "]";
+    }
+    
 }

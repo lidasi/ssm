@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cwweb.com.model.InInventoryMapper" >
+<mapper namespace="cwweb.com.dao.InInventoryMapper" >
   <resultMap id="BaseResultMap" type="cwweb.com.model.InInventory" >
     <id column="address_id" property="addressId" jdbcType="INTEGER" />
     <result column="total_id" property="totalId" jdbcType="INTEGER" />
@@ -336,49 +336,51 @@
 	    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
     
         <!--totalInventory属性关联字段-->
-        <collection property="commodityInfo"></collection>
-        <collection property="totalInventory" ofType="cwweb.com.model.TotalInventory">
+        <association property="totalInventory" javaType="cwweb.com.model.TotalInventory">
             <id column="totalin_id" property="totalinId" jdbcType="INTEGER" />
             <result column="uuid" property="uuid" jdbcType="VARCHAR" />
             <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
             <result column="total_number" property="totalNumber" jdbcType="INTEGER" />
             <result column="commdity_unit" property="commdityUnit" jdbcType="INTEGER" />
-	            <association property="commodityInfo" javaType="cwweb.com.model.CommodityInfo">
-		            <id column="commodity_id" property="commodityId" jdbcType="INTEGER" />
-				    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
-				    <result column="commodity_bar" property="commodityBar" jdbcType="VARCHAR" />
-				    <result column="commodity_market" property="commodityMarket" jdbcType="DOUBLE" />
-				    <result column="shelves_state" property="shelvesState" jdbcType="INTEGER" />
-				    <result column="style" property="style" jdbcType="INTEGER" />
-				    <result column="color" property="color" jdbcType="INTEGER" />
-				    <result column="size" property="size" jdbcType="INTEGER" />
-				    <result column="type" property="type" jdbcType="INTEGER" />
-                </association>
-        </collection>
+        </association>
+        <!-- 商品表关联字段 -->
+        <association property="commodityInfo" javaType="cwweb.com.model.CommodityInfo">
+            <id column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+            <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+            <result column="commodity_bar" property="commodityBar" jdbcType="VARCHAR" />
+            <result column="commodity_market" property="commodityMarket" jdbcType="DOUBLE" />
+            <result column="shelves_state" property="shelvesState" jdbcType="INTEGER" />
+            <result column="style" property="style" jdbcType="INTEGER" />
+            <result column="color" property="color" jdbcType="INTEGER" />
+            <result column="size" property="size" jdbcType="INTEGER" />
+            <result column="type" property="type" jdbcType="INTEGER" />
+        </association>
         
     </resultMap>
     <sql id="getInventoryPropert">
-        b.commodity_id as c_id, 
-        b.commodity_name as c_name, 
-        b.commodity_bar as c_bar, 
-        b.commodity_market as c_market, 
-        b.shelves_state as shelves_state, 
-        b.style as style, 
-        b.color as color, 
-        b.size as size, 
-        b.type as type, 
-        b.update_date as update_date, 
-        b.create_date as create_date, 
-        a.address_id, a.uuid, 
-        a.commdity_id, unit_price,
-        a.commdity_total, 
-        a.in_number, 
-        a.commdity_unit, 
-        a.in_type, 
-        a.brokerage, 
-        a.in_date, 
-        a.create_date, 
-        a.update_date
+        c.commodity_id, 
+        c.commodity_name, 
+        c.commodity_bar, 
+        c.commodity_market, 
+        c.shelves_state, 
+        c.style, 
+        c.color, 
+        c.size, 
+        c.type, 
+        c.update_date as update_date, 
+        c.create_date as create_date, 
+        i.address_id, 
+        i.uuid, 
+        i.total_id, 
+        i.unit_price,
+        i.commdity_total, 
+        i.in_number, 
+        i.commdity_unit, 
+        i.in_type, 
+        i.brokerage, 
+        i.in_date, 
+        i.create_date, 
+        i.update_date
     </sql>
     <select id="getInventory" resultMap="InventoryCommdity">
          select
@@ -386,11 +388,11 @@
             distinct
          </if>
          <include refid="getInventoryPropert" />
-         from in_inventory a,
-              total_inventory c,
-              commodity_info b
-         where a.total_id = c.totalin_id
-         and c.commodity_id = b.commodity_id
+         from in_inventory i,
+              total_inventory t,
+              commodity_info c
+         where i.total_id = t.totalin_id
+         and t.commodity_id = c.commodity_id
          <if test="_parameter != null">
           <include refid="Example_Where_Clause" />
         </if>

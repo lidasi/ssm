@@ -171,16 +171,8 @@ $("#commodityName").change(function(){
         var color = $(".selectColor").children('option:selected').val();
         var bar = $("#commodityBar").val();
         var name = $("#commodityName").val();
-        var formArry = {
-            "type" : type, 
-            "size" : size,
-            "style" : style,
-            "color" : color,
-            "bar" : bar,
-            "name" : name
-        };
-                
-        $.ajax({
+        loacation.href = "user/commoditySearch?type="+type+",size="+size+",style="+style+",color="+color+",bar="+bar+",name="+name+"";        
+        /*$.ajax({
             //几个参数需要注意一下
               type: "GET",//方法类型
               dataType: "json",//服务端接收的数据类型
@@ -292,26 +284,27 @@ $("#commodityName").change(function(){
                             str += "<td>" + count + "</td>";
                         }
                         count += 1;
-                        str += "<td>" + result[i].bar + "</td>";
-                        str += "<td>" + result[i].name + "</td>";
-                        str += "<td>" + result[i].market + "</td>";
-                        str += "<td>" + style + "</td>";
-                        str += "<td>" + color + "</td>";
-                        str += "<td>" + size + "</td>";
-                        str += "<td>" + type + "</td>";
-                        str += "<td>" + result[i].inNumber + "</td>";
-                        str += "<td>" + result[i].unitPrice + "</td>";
-                        str += "<td>" + result[i].commdityTotal + "</td>";
-                        str += "<td>" + c_in_type + "</td>";
-                        str += "<td>" + result[i].brokerage + "</td>";
-                        str += "<td>" + cUnit + "</td>";
-                        str += "<td>" + result[i].inDate + "</td>";
+                        str += "<td class='totalId' hidden>" + result[i].totalId + "</td>";
+                        str += "<td class='bar'>" + result[i].bar + "</td>";
+                        str += "<td class='name'>" + result[i].name + "</td>";
+                        str += "<td class='market'>" + result[i].market + "</td>";
+                        str += "<td class='style'>" + style + "</td>";
+                        str += "<td class='color'>" + color + "</td>";
+                        str += "<td class='size'>" + size + "</td>";
+                        str += "<td class='type'>" + type + "</td>";
+                        str += "<td class='inNumber'>" + result[i].inNumber + "</td>";
+                        str += "<td class='unitPrice'>" + result[i].unitPrice + "</td>";
+                        str += "<td class='commdityTotal'>" + result[i].commdityTotal + "</td>";
+                        str += "<td class='c_in_type'>" + c_in_type + "</td>";
+                        str += "<td class='brokerage'>" + result[i].brokerage + "</td>";
+                        str += "<td class='cUnit'>" + cUnit + "</td>";
+                        str += "<td class='inDate'>" + result[i].inDate + "</td>";
                         str +="<td>"
-                        str +=     "<button type='button' onclick='updInInventry()' id='updInInventry' class='btn btn-warning btn-xs' data-toggle='tooltip' data-placement='left' title='修改这条入库信息'>"
+                        str +=     "<button type='button' onclick='updInInventry(this)' id='updInInventry' class='btn btn-warning btn-xs' data-toggle='tooltip' data-placement='left' title='修改这条入库信息'>"
                         str +=          "<span class='glyphicon glyphicon-edit'></span>"
                         str +=     "</button>"
                         str += 		"&nbsp;&nbsp;"
-                        str +=     "<button type='button' onclick='delInInventry()' id='delInInventry' class='btn btn-danger btn-xs' data-toggle='tooltip' data-placement='left' title='删除这条入库信息'>"
+                        str +=     "<button type='button' onclick='delInInventry(this)' id='delInInventry' class='btn btn-danger btn-xs' data-toggle='tooltip' data-placement='left' title='删除这条入库信息'>"
                         str +=         "<span class='glyphicon glyphicon-remove-sign'></span>"
                         str +=     "</button>"
                         str +="</td>"
@@ -327,7 +320,7 @@ $("#commodityName").change(function(){
               error : function() {
                 alert("异常！");
               }
-         });
+         });*/
     });
     
     $("#addInInventryChange").click(function() {
@@ -362,10 +355,8 @@ var addInInventry = function() {
             console.log(result);//打印服务端返回的数据(调试用)
             if (result == 200) {
                 alert("添加成功");
-                $("#addBar").val() == "";
-                $("#addInNumber").val() == "";
-                $("#addUnitPrice").val() == "";
-                $("#addBrokerage").val() == "";
+                $("#exampleModal").modal('hide');
+                $("#search").click();
             }
             if (result == 400) {
             	alert("填写信息不完整")
@@ -379,10 +370,22 @@ var addInInventry = function() {
         }
 	})
 }
-var updInInventry = function() {
-	console.log("修改")
+var updInInventry = function(obj) {
+	var indexs = obj.parentNode.parentNode.rowIndex;
+	var tb = document.getElementById("commdityTable");;
+	var rows = tb.rows;
+	for(var i = 0; i < rows.length; i++) {
+		for (var j = 0; j < rows[i].cells.length; j++) {
+			if (i == indexs) {
+				var cell = rows[i].cells[j];
+				console.log(cell.innerHTML);
+			}
+			
+		}
+	}
+	
 }
 
-var delInInventry = function() {
-	
+var delInInventry = function(obj) {
+	console.log(obj.parentNode.parentNode.rowIndex)
 }

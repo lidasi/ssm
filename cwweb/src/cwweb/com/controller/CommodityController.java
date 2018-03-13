@@ -1,6 +1,7 @@
 package cwweb.com.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 import cwweb.com.model.CommodityInfo;
 import cwweb.com.model.CommodityInfoExample;
@@ -45,12 +51,13 @@ public class CommodityController {
      * @param request
      * @return
      * @throws Exception 
-     */
+     *//*
     @RequestMapping(value ="/commoditySearch", method = RequestMethod.GET)
     @ResponseBody
-    public JSONArray CommoditySearch(HttpServletRequest request) throws Exception {
+    public JSONArray CommoditySearch(HttpServletRequest request, @RequestParam(value = "pagenum", defaultValue = "1")Integer pagenum) throws Exception {
         DateUtil dateUtil = new DateUtil();
         JSONArray jsonArray = new JSONArray(); 
+        Page<Object> page = PageHelper.startPage(pagenum, 5);
         InInventoryExample inInventoryExample = new InInventoryExample();
         Criteria criteria = inInventoryExample.createCriteria();
         int type = Integer.parseInt(request.getParameter("type"));
@@ -79,8 +86,11 @@ public class CommodityController {
         }
         List<InInventory> resList = inInventoryService.getInventory(inInventoryExample);
         
+
+        
         for(InInventory arr : resList) {
             JSONObject jsonObject = new JSONObject();
+            jsonObject.put("totalId", arr.getTotalId());
             jsonObject.put("bar", arr.getCommodityInfo().getCommodityBar());
             jsonObject.put("name", arr.getCommodityInfo().getCommodityName());
             jsonObject.put("market", arr.getCommodityInfo().getCommodityMarket());
@@ -101,6 +111,54 @@ public class CommodityController {
         
         return jsonArray;
         
+    }*/
+    
+    /**
+     * 商品入库管理
+     * @param request
+     * @return
+     * @throws Exception 
+     */
+    @RequestMapping(value ="/commoditySearch", method = RequestMethod.GET)
+    public String CommoditySearch(HttpServletRequest request,
+            @RequestParam(value = "pagenum", defaultValue = "1")Integer pagenum,
+            Map<String, Object> map
+            ) throws Exception {
+        Page<Object> page = PageHelper.startPage(pagenum, 5);
+        InInventoryExample inInventoryExample = new InInventoryExample();
+        Criteria criteria = inInventoryExample.createCriteria();
+        int type = Integer.parseInt(request.getParameter("type"));
+        int size = Integer.parseInt(request.getParameter("size"));
+        int style = Integer.parseInt(request.getParameter("style"));
+        int color = Integer.parseInt(request.getParameter("color"));
+        String bar = request.getParameter("bar");
+        String name = request.getParameter("name");
+        if(type != -1) {
+            criteria.andTypeEqualTo(type);
+        }
+        if(size != -1) {
+            criteria.andSizeEqualTo(size);
+        }
+        if(style != -1) {
+            criteria.andStyleEqualTo(style);     
+        }
+        if(color != -1) {
+            criteria.andColorEqualTo(color);
+        }
+        if(StringUtils.isNotEmpty(name)) {
+            criteria.andCommodityNameLike("%" + name + "%");
+        }
+        if(StringUtils.isNotEmpty(bar)) {
+            criteria.andCommodityBarEqualTo(bar);
+        }
+  
+        List<InInventory> resList = inInventoryService.getInventory(inInventoryExample);
+        PageInfo<InInventory> info = new PageInfo<InInventory>(resList, 5);
+
+        map.put("InInventoryList", resList);
+        map.put("info", info);
+        return "inInventory";
+        
     }
     
     /**
@@ -112,11 +170,9 @@ public class CommodityController {
     public String addInInventry(HttpServletRequest request) {
         String getNow17 = DateUtil.getNow17();
         String strUUid = UUIDUtil.minimizedUUID();
+        String t_strUUid = UUIDUtil.minimizedUUID();
         CommodityInfoExample commodityInfoExample = new CommodityInfoExample();
         cwweb.com.model.CommodityInfoExample.Criteria commodCriteria = commodityInfoExample.createCriteria();
-        
-        InInventoryExample inInventoryExample = new InInventoryExample();
-        Criteria criteria = inInventoryExample.createCriteria();
         
         TotalInventoryExample totalInventoryExample = new TotalInventoryExample();
         cwweb.com.model.TotalInventoryExample.Criteria totalCriteria = totalInventoryExample.createCriteria();
@@ -143,7 +199,7 @@ public class CommodityController {
                 InInventory inInventory = new InInventory();
                 //入库商品表添加一条记录
                 inInventory.setTotalId(totalList.get(0).getTotalinId());
-                inInventory.setUuid(totalList.get(0).getUuid());
+                inInventory.setUuid(strUUid);
                 inInventory.setUnitPrice(unitPrice);
                 double price = unitPrice;
                 double total = price * inNumber;
@@ -185,7 +241,7 @@ public class CommodityController {
                 TotalInventory totalInventory = new TotalInventory();
                 totalInventory.setCommdityUnit(0);
                 totalInventory.setCommodityId(list.get(0).getCommodityId());
-                totalInventory.setUuid(strUUid);
+                totalInventory.setUuid(t_strUUid);
                 totalInventory.setTotalNumber(inNumber);
                 totalInventory.setCreateDate(getNow17);
                 totalInventory.setUpdateDate(getNow17);
